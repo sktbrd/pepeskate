@@ -1,0 +1,57 @@
+.sidemenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 5rem;
+  }
+  
+  .sidemenu a {
+    margin-bottom: 2rem;
+  }
+  
+  .hamburgerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    margin: 3px 0;
+  }
+  
+  .open {
+    display: block;
+  }
+  
+  .closed {
+    display: none;
+  }
+  
+  .menuItems li {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333; /* Change the color here */
+  }
+  
+  .menuItems li svg {
+    margin-right: 10px;
+  }
+  
+  .menuItems li:hover {
+    color: #f7a307; /* Change the hover color here */
+    cursor: pointer;
+  }
+  
+  .menuItems li:hover svg {
+    color: #f71b07; /* Change the hover color here */
+  }
