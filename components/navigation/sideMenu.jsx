@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { FaHome, FaUser, FaCog } from 'react-icons/fa';
 import styles from "../../styles/sideMenu.module.css";
+import Router from "next/router";
+import Link from "next/link";
 
 function SideMenu({ showSideMenu, setShowSideMenu }) {
   const handleOpenMenu = () => {
     setShowSideMenu(true);
   };
 
-  const handleCloseMenu = () => {
+  const handleCloseMenu = (e, path) => {
     setShowSideMenu(false);
+    console.clear()
+    console.log("clicked")
   };
 
   return (
@@ -25,20 +29,20 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         <div className={styles.bar}></div>
       </div>
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
-        <li onClick={handleCloseMenu}>
-          <FaHome /> Home
+        <li onClick={(e) => handleCloseMenu (e, "/")}>
+        <Link href={"/"}><FaHome /> Home</Link>
         </li>
         <li onClick={handleCloseMenu}>
           <FaUser /> Profile
         </li>
         <li onClick={handleCloseMenu}>
-          <FaCog /> Settings
+          <FaCog /> Config
         </li>
-        <li onClick={handleCloseMenu}>
-          <FaCog /> NFT Wallet 
+        <li onClick={(e) => handleCloseMenu (e, "/nft")}>
+          <Link href={"/nft"}><FaCog /> NFTS</Link>
         </li>
-        <li onClick={handleCloseMenu}>
-          <FaCog /> Post 
+        <li onClick={(e) => handleCloseMenu (e, "/post")}>
+          <Link href={"/post"}><FaCog /> Post </Link> 
         </li>
       </ul>
       {!showSideMenu && (

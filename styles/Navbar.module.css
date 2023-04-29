@@ -1,27 +1,24 @@
 .navbar {
 display: flex;
-justify-content: space-between;
 align-items: center;
+justify-content: space-between;
 background-color: #333;
 color: #fff;
 border-radius: 10px;
 }
 
+.connectbutton {
+justify-content: right;
+}
 
 .header {
+justify-content: center;
 font-size: 2rem;
 font-weight: bold;
 color: rgb(255, 179, 0);
 text-shadow: 0 0 5px rgba(255, 179, 0, 0.7), 0 0 10px rgba(255, 179, 0, 0.5), 0 0 15px rgba(255, 179, 0, 0.3);
 }
 
-.logo {
-width: 3em;
-height: 3rem;
-cursor: pointer;
-border-radius: 10px;	
-padding: 4px;
-}
 
 .hive_login_button {
 background: linear-gradient(270deg, #f71b07, #ec7b4e);

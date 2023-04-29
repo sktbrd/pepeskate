@@ -52,7 +52,8 @@ export default function HiveBlog() {
   };
 
   return (
-    <div className={styles.tag_selector}>
+  <div className={styles.tag_selector}>
+    <div className={styles.search_bar}>
       <input
         type="text"
         placeholder="Search"
@@ -60,30 +61,32 @@ export default function HiveBlog() {
         onChange={(e) => setTag(e.target.value)}
       />
       <button onClick={fetchPosts}>Search</button>
-      {isLoading ? (
-        <div>Roll a joint...</div>
-      ) : (
-        <div className={styles.posts}>
-          {posts.map((post) => (
-            <a key={post.permlink} className={styles.post} onClick={() => handlePostClick(post)}>
-              <img src={post.thumbnail} alt="post thumbnail" />
-              <div className={styles.postInfo}>
-                <h3>{post.title}</h3>
-                <p>Author: {post.author}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
-      {selectedPost && (
-        <div className={styles.modalContainer}>
-          <PostModal
-            title={selectedPost.title}
-            content={selectedPost.body}
-            onClose={handleModalClose}
-          />
-        </div>
-      )}
     </div>
-  );
+    {selectedPost && (
+      <div className={styles.modalContainer}>
+        <PostModal
+          title={selectedPost.title}
+          content={selectedPost.body}
+          onClose={handleModalClose}
+        />
+      </div>
+    )}
+    {isLoading ? (
+      <div>Roll a joint...</div>
+    ) : (
+      <div className={styles.posts}>
+        {posts.map((post) => (
+          <a key={post.permlink} className={styles.post} onClick={() => handlePostClick(post)}>
+            <img src={post.thumbnail} alt="post thumbnail" />
+            <div className={styles.postInfo}>
+              <h3>{post.title}</h3>
+              <p>Author: {post.author}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+);
+
 }

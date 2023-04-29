@@ -1,14 +1,13 @@
-.sidemenu {
+
+  .sidemenu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 300px; /* Changed from 200px to 300px */
     font-size: 5rem;
-  }
-  
-  .sidemenu a {
-    margin-bottom: 2rem;
+    background-color: #f7a307;
   }
   
   .hamburgerButton {
@@ -29,6 +28,8 @@
   
   .open {
     display: block;
+    color: #f71b07;
+    background-color: red;
   }
   
   .closed {
@@ -40,11 +41,14 @@
     align-items: center;
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: #333; /* Change the color here */
+    color: #ccc5c5; /* Change the color here */
+    background-color: rgb(82, 79, 79);
+    border-radius: 5px;
   }
   
   .menuItems li svg {
     margin-right: 10px;
+    color: #f7a307;
   }
   
   .menuItems li:hover {
@@ -55,3 +59,9 @@
   .menuItems li:hover svg {
     color: #f71b07; /* Change the hover color here */
   }
+
+.iconMenu {
+  color: #f7a307;
+  justify-content: space-between;
+  width: 100px;
+}

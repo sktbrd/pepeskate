@@ -18,11 +18,14 @@ export default function PostModal({ title, content, onClose }) {
           <div className={styles.modalContainer}>
             <div className={styles.modalHeader}>
               <h3>{title}</h3>
-              <button className={styles.modalCloseButton} onClick={handleClose}>
-                X
-              </button>
             </div>
             <div className={styles.modalContent}>{content}</div>
+            <button className={styles.modalCloseButton} onClick={handleClose}>
+                Close
+            </button>
+            <button className={styles.modalVoteButton} onClick={console.log("good luck setting this function")}>
+                VOTE
+            </button>
           </div>
         </div>
       )}

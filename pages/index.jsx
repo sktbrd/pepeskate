@@ -1,11 +1,11 @@
 import styles from "../styles/Home.module.css";
-import HiveFeed from "../components/hiveFeed";
+import HiveBlog from "../components/HiveFeed";
 
 export default function Home() {
   return (
     <div>
       <main className={styles.main}>
-        <HiveFeed />
+        <HiveBlog />
       </main>
     </div>
   );
