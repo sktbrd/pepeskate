@@ -1,64 +1,64 @@
+.sidemenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 500px;
+  font-size: 5rem;
+  background-color: #f7a307;
+}
 
-  .sidemenu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 300px; /* Changed from 200px to 300px */
-    font-size: 5rem;
-    background-color: #f7a307;
-  }
-  
-  .hamburgerButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    cursor: pointer;
-  }
-  
-  .bar {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin: 3px 0;
-  }
-  
-  .open {
-    display: block;
-    color: #f71b07;
-    background-color: red;
-  }
-  
-  .closed {
-    display: none;
-  }
-  
-  .menuItems li {
-    display: flex;
-    align-items: center;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #ccc5c5; /* Change the color here */
-    background-color: rgb(82, 79, 79);
-    border-radius: 5px;
-  }
-  
-  .menuItems li svg {
-    margin-right: 10px;
-    color: #f7a307;
-  }
-  
-  .menuItems li:hover {
-    color: #f7a307; /* Change the hover color here */
-    cursor: pointer;
-  }
-  
-  .menuItems li:hover svg {
-    color: #f71b07; /* Change the hover color here */
-  }
+.hamburgerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 20px;
+  height: 2px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+.open {
+  display: block;
+  color: #f71b07;
+  background-color: red;
+}
+
+.closed {
+  display: none;
+}
+
+.menuItems li {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-top: 5px; /* Added margin-top */
+  margin-bottom: 15px; /* Increased margin-bottom from 10px to 15px */
+  color: #ccc5c5;
+  background-color: rgb(82, 79, 79);
+  border-radius: 5px;
+}
+
+.menuItems li svg {
+  margin-right: 10px;
+  color: #f7a307;
+}
+
+.menuItems li:hover {
+  color: #f7a307;
+  cursor: pointer;
+}
+
+.menuItems li:hover svg {
+  color: #f71b07;
+}
 
 .iconMenu {
   color: #f7a307;

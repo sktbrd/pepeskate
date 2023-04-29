@@ -53,7 +53,7 @@ export default function HiveBlog() {
 
   return (
   <div className={styles.tag_selector}>
-    <div className={styles.search_bar}>
+    {/* <div className={styles.search_bar}>
       <input
         type="text"
         placeholder="Search"
@@ -61,7 +61,7 @@ export default function HiveBlog() {
         onChange={(e) => setTag(e.target.value)}
       />
       <button onClick={fetchPosts}>Search</button>
-    </div>
+    </div> */}
     {selectedPost && (
       <div className={styles.modalContainer}>
         <PostModal

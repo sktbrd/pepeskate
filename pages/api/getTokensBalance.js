@@ -1,86 +1,117 @@
-import { useState, useEffect } from "react";
-import styles from "/styles/TokensBalanceDisplay.module.css";
+import { Network, Alchemy, TokenBalanceType } from "alchemy-sdk";
 
-// Define TokensBalancePanel component
-export default function TokensBalancePanel({ walletAddress, chain }) {
-  // Define state variables using the useState hook
-  const [tokensBalance, setTokensBalance] = useState();
-  const [isLoading, setIsloading] = useState(false);
-  const [address, setAddress] = useState();
-  // Define function to get token balances
-  const getBalance = async () => {
-    setIsloading(true);
-    if (walletAddress) {
-      try {
-        const fetchedTokensBalance = await fetch("/api/getTokensBalance", {
-          method: "POST",
-          body: JSON.stringify({
-            address: address,
-            chain: chain ? chain : "ETH_MAINNET",
-          }),
-        }).then((res) => res.json());
-        setTokensBalance(fetchedTokensBalance);
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    setIsloading(false);
+export default async function handler(req, res) {
+  // parse the address and chain from the request body
+  const { address, chain } = JSON.parse(req.body);
+
+  // check if the request method is POST
+  if (req.method !== "POST") {
+    res.status(405).send({ message: "Only POST requests allowed" });
+    return;
+  }
+
+  // set the settings for Alchemy SDK
+  const settings = {
+    apiKey: process.env.ALCHEMY_API_KEY,
+    network: Network[chain],
   };
 
-  // Hydration error guard
-  useEffect(() => {
-    if (walletAddress?.length) setAddress(walletAddress);
-  }, [walletAddress]);
+  // create an instance of the Alchemy SDK
+  const alchemy = new Alchemy(settings);
 
-  //   Fetch token balances when page loads
+  try {
+    // fetch the token balances using the Alchemy SDK
+    const fetchedTokens = await alchemy.core.getTokenBalances(address, {
+      type: TokenBalanceType.ERC20,
+    });
 
-  useEffect(() => {
-    if (address) getBalance();
-  }, [address]);
+    // fetch the Ethereum balance for the given address
+    const ethBalance = await alchemy.core.getBalance(address);
+    const parsedEthBalance = parseInt(ethBalance.toString()) / Math.pow(10, 18);
 
-  // Render TokensBalancePanel component
-  return (
-    <div className={styles.token_panel_container}>
-      <div className={styles.tokens_box}>
-        {address?.length ? (
-          <div className={styles.header}>
-            {address?.length > 15
-              ? address.slice(0, 6) + "..." + address?.slice(address.length - 4)
-              : address}
-          </div>
-        ) : (
-          ""
-        )}
+    // create an object representing the Ethereum balance
+    const ethBalanceObject = {
+      name: "Ethereum",
+      symbol: "ETH",
+      logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+      decimals: 18,
+      balance: parsedEthBalance.toFixed(3),
+      address: "0x",
+    };
 
-        {isLoading
-          ? "Loading..."
-          : tokensBalance?.length &&
-            tokensBalance?.map((token, i) => {
-              const convertedBalance = Math.round(token.balance * 100) / 100;
-              return (
-                <div key={i} className={styles.token_container}>
-                  <div className={styles.token_name_logo}>
-                    {token.logo ? (
-                      <div className={styles.image_container}>
-                        <img src={token.logo} alt={""}></img>
-                      </div>
-                    ) : (
-                      <div className={styles.image_placeholder_container}></div>
-                    )}
-                    <div className={styles.coin_name}>
-                      {token.name?.length > 15
-                        ? token.name?.substring(0, 15)
-                        : token.name}
-                    </div>
-                  </div>
-                  <div className={styles.token_info}>
-                    <div className={styles.price}>{convertedBalance}</div>
-                    <div className={styles.coin_symbol}>{token.symbol}</div>
-                  </div>
-                </div>
-              );
-            })}
-      </div>
-    </div>
-  );
+    // extract the token balances and contract addresses from the fetched tokens
+    const fetchedTokenBalances = fetchedTokens.tokenBalances.map(
+      (token) => token.tokenBalance
+    );
+
+    const fetchedTokenAddresses = fetchedTokens.tokenBalances.map(
+      (token) => token.contractAddress
+    );
+
+    // fetch the token metadata for each token address
+    const fetchedTokenMetadata = await Promise.all(
+      fetchedTokenAddresses.map(async (address) => {
+        let metadata;
+        try {
+          metadata = await alchemy.core.getTokenMetadata(address);
+        } catch (e) {
+          console.log(e);
+          metadata = {
+            name: null,
+            symbol: null,
+            logo: null,
+            decimals: null,
+          };
+        }
+
+        return metadata;
+      })
+    );
+
+    // create an array of objects representing each token balance
+    const unifiedBalancedAndMetadata = [ethBalanceObject];
+
+    for (let x = 0; x < fetchedTokenMetadata.length - 1; x++) {
+      const tokenMetadata = fetchedTokenMetadata[x];
+      const { name, symbol, logo, decimals } = tokenMetadata;
+      const hexBalance = fetchedTokenBalances[x];
+      const address = fetchedTokenAddresses[x];
+      let convertedBalance;
+
+      if (hexBalance && tokenMetadata.decimals) {
+        convertedBalance = parseInt(hexBalance) / Math.pow(10, decimals);
+        if (convertedBalance > 0) {
+          const tokenBalanceAndMetadata = {
+            name,
+            symbol: symbol.length > 6 ? `${symbol.substring(0, 6)}...` : symbol,
+            logo,
+            decimals,
+            balance: convertedBalance.toFixed(2),
+            address,
+          };
+          unifiedBalancedAndMetadata.push(tokenBalanceAndMetadata);
+        }
+      }
+    }
+
+    // filter out any token balances with empty names
+    unifiedBalancedAndMetadata.filter(
+      (balanceAndMetadata) => balanceAndMetadata.name.length
+    );
+
+    // send the array of token balances as a JSON response
+    res.status(200).json(unifiedBalancedAndMetadata);
+  } catch (e) {
+    console.warn(e);
+    res.status(500).send({
+      message: "something went wrong, check the log in your terminal",
+    });
+  }
 }
+
+const settings = {
+  apiKey: process.env.ALCHEMY_API_KEY,
+  network: Network.ETH_MAINNET,
+};
+
+const alchemy = new Alchemy(settings);

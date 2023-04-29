@@ -52,10 +52,9 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
         )}
 
         {isLoading
-          ? "Loading..."
+          ? "Roll a joint..."
           : tokensBalance?.length &&
             tokensBalance?.map((token, i) => {
-              const convertedBalance = Math.round(token.balance * 100) / 100;
               return (
                 <div key={i} className={styles.token_container}>
                   <div className={styles.token_name_logo}>
@@ -73,7 +72,7 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
                     </div>
                   </div>
                   <div className={styles.token_info}>
-                    <div className={styles.price}>{convertedBalance}</div>
+                    <div className={styles.price}>{token.balance}</div>
                     <div className={styles.coin_symbol}>{token.symbol}</div>
                   </div>
                 </div>

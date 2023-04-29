@@ -4,6 +4,7 @@ export default async function handler(req, res) {
 	const { address, pageSize, chain, excludeFilter, pageKey } = JSON.parse(
 		req.body
 	);
+	console.log(address)
 	if (req.method !== "POST") {
 		res.status(405).send({ message: "Only POST requests allowed" });
 		return;

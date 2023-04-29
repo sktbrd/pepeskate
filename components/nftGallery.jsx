@@ -5,8 +5,8 @@ import { useAccount } from "wagmi";
 export default function NFTGallery({}) {
   const [nfts, setNfts] = useState();
   const [walletOrCollectionAddress, setWalletOrCollectionAddress] =
-    useState("vitalik.eth");
-  const [fetchMethod, setFetchMethod] = useState("wallet");
+    useState("skatehive.eth");
+  const [fetchMethod, setFetchMethod] = useState("connectedwallet");
   const [pageKey, setPageKey] = useState();
   const [spamFilter, setSpamFilter] = useState(true);
   const [isLoading, setIsloading] = useState(false);
@@ -18,7 +18,7 @@ export default function NFTGallery({}) {
     setPageKey()
     switch (e.target.value) {
       case "wallet":
-        setWalletOrCollectionAddress("vitalik.eth");
+        setWalletOrCollectionAddress("skatehive.eth");
 
         break;
       case "collection":
@@ -80,7 +80,7 @@ export default function NFTGallery({}) {
     <div className={styles.nft_gallery_page}>
       <div>
         <div className={styles.fetch_selector_container}>
-          <h2 style={{ fontSize: "20px" }}>Explore NFTs by</h2>
+          <h2 style={{ fontSize: "20px", color: "white"}}>Explore NFTs by</h2>
           <div className={styles.select_container}>
             <select
               defaultValue={"wallet"}
@@ -103,19 +103,6 @@ export default function NFTGallery({}) {
               }}
               placeholder="Insert NFTs contract or wallet address"
             ></input>
-            <div className={styles.select_container_alt}>
-              <select
-                onChange={(e) => {
-                  setChain(e.target.value);
-                }}
-                defaultValue={process.env.ALCHEMY_NETWORK}
-              >
-                <option value={"ETH_MAINNET"}>Mainnet</option>
-                <option value={"MATIC_MAINNET"}>Polygon</option>
-                <option value={"ETH_GOERLI"}>Goerli</option>
-                <option value={"MATIC_MUMBAI"}>Mumbai</option>
-              </select>
-            </div>
             <div onClick={() => fetchNFTs()} className={styles.button_black}>
               <a>Search</a>
             </div>
@@ -123,9 +110,10 @@ export default function NFTGallery({}) {
         </div>
       </div>
 
+
       {isLoading ? (
         <div className={styles.loading_box}>
-          <p>Loading...</p>
+          <p>Roll a joint...</p>
         </div>
       ) : (
         <div className={styles.nft_gallery}>
@@ -138,7 +126,7 @@ export default function NFTGallery({}) {
                 justifyContent: "end",
               }}
             >
-              <p>Hide spam</p>
+              <p>Hide Shit</p>
               <label className={styles.switch}>
                 <input
                   onChange={(e) => setSpamFilter(e.target.checked)}
@@ -150,19 +138,20 @@ export default function NFTGallery({}) {
             </div>
           )}
 
-          <div className={styles.nfts_display}>
-            {nfts?.length ? (
-              nfts.map((nft) => {
-                return <NftCard key={nft.tokenId} nft={nft} />;
-              })
-            ) : (
-              <div className={styles.loading_box}>
-                <p>No NFTs found for the selected address</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+
+					<div className={styles.nfts_display}>
+						{nfts?.length ? (
+							nfts.map((nft, index) => {
+								return <NftCard key={index} nft={nft} />;
+							})
+						) : (
+							<div className={styles.loading_box}>
+								<p>No NFTs found for the selected address</p>
+							</div>
+						)}
+					</div>
+				</div>
+			)}
 
       {pageKey && nfts?.length && (
         <div>
@@ -185,7 +174,7 @@ function NftCard({ nft }) {
       <div className={styles.image_container}>
         {nft.format == "mp4" ? (
           <video src={nft.media} controls>
-            Your browser does not support the video tag.
+            Your browser sucks and does not support the video tag.
           </video>
         ) : (
           <img src={nft.media}></img>
