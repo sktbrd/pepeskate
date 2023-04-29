@@ -13,8 +13,9 @@ export default function Layout({ children }) {
       <Navbar/>
       <div style={{ display: "flex" }}>
         <SideMenu showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
-        <Home/>
+        <main>{children}</main>
       </div>
+     
     </div>
   );
 }

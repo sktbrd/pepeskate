@@ -39,7 +39,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
           <FaCog /> Config
         </li>
         <li onClick={(e) => handleCloseMenu (e, "/nft")}>
-          <Link href={"/nft"}><FaCog /> NFTS</Link>
+          <Link href={"/nftGallery"}><FaCog /> NFTS</Link>
         </li>
         <li onClick={(e) => handleCloseMenu (e, "/post")}>
           <Link href={"/post"}><FaCog /> Post </Link> 

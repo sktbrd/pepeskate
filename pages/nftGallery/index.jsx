@@ -1,9 +1,10 @@
+import NFTGallery from "../../components/nftGallery";
 export default function nftWallet() {
   console.log("TESTE")
   return (
     <div>
       <main>
-        <h1>HELLO WORLD</h1>
+        <NFTGallery></NFTGallery>
       </main>
     </div>
   );
