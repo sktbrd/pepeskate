@@ -1,17 +1,18 @@
 import { useState } from "react";
-import styles from "../styles/HiveLoginModal.module.css";
+import useAuthUser from "../pages/api/UseAuthUser.js";
+import { useRouter } from "next/router";
 
+export default function HiveLoginModal({ showModal, handleClose }) {
+  const [username, setUsername] = useState("");
+  const { loginWithHive } = useAuthUser();
+  const router = useRouter();
 
-export default function HiveLoginModal({
-  showModal,
-  handleClose,
-  handleHiveLogin,
-  username,
-  setUsername,
-}) {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    handleHiveLogin(username);
+    await loginWithHive(username);
+    setUsername("");
+    handleClose();
+    router.push("/profile");
   };
 
   const handleInputChange = (event) => {

@@ -30,6 +30,7 @@ export default function HiveBlog() {
         const thumbnail = metadata?.image?.[0];
         return { ...post, thumbnail };
       });
+
   
       setPosts(postsWithThumbnails);
     } catch (error) {

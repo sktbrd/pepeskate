@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUpload, FaWallet, FaHome, FaUser, FaCog } from 'react-icons/fa';
 import styles from "../../styles/sideMenu.module.css";
-import Router from "next/router";
 import Link from "next/link";
+import HiveLoginModal from "../HiveLoginModal";
+import useAuthUser from "../../pages/api/UseAuthUser.js";
+import { useRouter } from "next/router";
 
 function SideMenu({ showSideMenu, setShowSideMenu }) {
+  const router = useRouter();
+  const { user, logout } = useAuthUser();
+  const [showHiveLoginModal, setShowHiveLoginModal] = useState(false);
+  const [username, setUsername] = useState("");
+
   const handleOpenMenu = () => {
     setShowSideMenu(true);
   };
@@ -14,6 +21,17 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     console.clear()
     console.log("clicked")
   };
+
+  const handleHiveLogin = (username) => {
+    setUsername("");
+    setShowHiveLoginModal(false);
+    console.log(`Logged in as ${user.name}`);
+    router.push("/");
+  }
+
+  useEffect(() => {
+    setUsername(user ? user.name : "");
+  }, [user]);
 
   return (
     <div
@@ -33,7 +51,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         <Link href={"/"}><FaHome /> Home</Link>
         </li>
         <li onClick={(e) => handleCloseMenu (e, "/profile")}>
-        <Link className={styles.menuItems} href={"/profile"}><FaUser /> Profile</Link>
+        <Link href={"/profile"}><FaUser /> {username ? username : "Profile"}</Link>
         </li>
         <li onClick={(e) => handleCloseMenu (e, "/wallet")}>
           <Link href={"/wallet"}><FaWallet /> Wallet</Link>
@@ -41,6 +59,16 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         <li onClick={(e) => handleCloseMenu (e, "/post")}>
           <Link href={"/post"}><FaUpload /> Post </Link> 
         </li>
+        {user ? (
+          <li onClick={logout}>
+            <FaUpload /> Logout
+          </li>
+        ) : (
+          <li onClick={() => setShowHiveLoginModal(true)}>
+            <FaUpload /> HiveLogin
+          </li>
+        )}
+        <HiveLoginModal showModal={showHiveLoginModal} handleClose={() => setShowHiveLoginModal(false)} handleHiveLogin={handleHiveLogin} setUsername={setUsername} />
       </ul>
       {!showSideMenu && (
         <div className={styles.iconMenu}>
@@ -62,4 +90,4 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
   );
 }
 
-export default SideMenu;
+export default SideMenu

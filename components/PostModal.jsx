@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "../styles/PostModal.module.css";
 
-export default function PostModal({ title, content, onClose }) {
+export default function PostModal({ title, content, onClose}) {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClose = () => {
@@ -9,6 +9,13 @@ export default function PostModal({ title, content, onClose }) {
     if (typeof onClose === "function") {
       onClose();
     }
+  };
+
+  const onNext = () => {
+    console.log("testing arrow")
+  };
+  const onPrev = () => {
+    console.log("testing arrow")
   };
 
   return (
@@ -21,10 +28,21 @@ export default function PostModal({ title, content, onClose }) {
             </div>
             <div className={styles.modalContent}>{content}</div>
             <button className={styles.modalCloseButton} onClick={handleClose}>
-                Close
+              Close
             </button>
-            <button className={styles.modalVoteButton} onClick={console.log("good luck setting this function")}>
-                VOTE
+            <div className={styles.modalNavigation}>
+              <button className={styles.modalPrevButton} onClick={onPrev}>
+                {"<"}
+              </button>
+              <button className={styles.modalNextButton} onClick={onNext}>
+                {">"}
+              </button>
+            </div>
+            <button
+              className={styles.modalVoteButton}
+              onClick={() => console.log("vote clicked")}
+            >
+              VOTE
             </button>
           </div>
         </div>

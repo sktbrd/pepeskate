@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getDhive } from "../_app";
 
 export default function useAuthUser() {
   const { dhive } = getDhive();
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userData = sessionStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
 
   const loginWithHive = async (username) => {
     if (!window.hive_keychain) {
