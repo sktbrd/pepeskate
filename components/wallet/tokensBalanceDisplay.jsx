@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../styles/TokensBalanceDisplay.module.css";
+import styles from "../../styles/TokensBalanceDisplay.module.css";
 
 // Define TokensBalancePanel component
 export default function TokensBalancePanel({ walletAddress, chain }) {
@@ -44,7 +44,7 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
       <div className={styles.tokens_box}>
         {address?.length ? (
           <div className={styles.header}>
-            {address?.slice(0, 6)}...
+            {address?.slice(0, 6)}
             {address?.slice(address.length - 4)}
           </div>
         ) : (

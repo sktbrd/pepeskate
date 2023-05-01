@@ -26,7 +26,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     setUsername("");
     setShowHiveLoginModal(false);
     console.log(`Logged in as ${user.name}`);
-    router.push("/");
+    router.push("/wallet");
   }
 
   useEffect(() => {

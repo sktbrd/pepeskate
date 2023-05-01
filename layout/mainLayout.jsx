@@ -1,5 +1,5 @@
 import Navbar from "../components/navigation/navbar";
-import SideMenu from "../components/navigation/sideMenu";
+  import SideMenu from "../components/navigation/sideMenu";
 import { useState } from "react";
 
 export default function Layout({ children }) {

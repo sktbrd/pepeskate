@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../styles/NftGallery.module.css";
+import styles from "../../styles/NftGallery.module.css";
 import { useAccount } from "wagmi";
 
 export default function NFTGallery({}) {
@@ -88,9 +88,9 @@ export default function NFTGallery({}) {
                 changeFetchMethod(e);
               }}
             >
-              <option value={"wallet"}>wallet</option>
-              <option value={"collection"}>collection</option>
-              <option value={"connectedWallet"}>connected wallet</option>
+              <option value={"connectedWallet"}>Your Wallet</option>
+              <option value={"wallet"}>Any Wallet</option>
+              <option value={"collection"}>Any Collection</option>
             </select>
           </div>
         </div>

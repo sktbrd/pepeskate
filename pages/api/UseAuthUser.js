@@ -4,6 +4,8 @@ import { getDhive } from "../_app";
 export default function useAuthUser() {
   const { dhive } = getDhive();
   const [user, setUser] = useState(null);
+  const [hiveBalance, setHiveBalance] = useState(null);
+  const [hbdBalance, setHbdBalance] = useState(null);
 
   useEffect(() => {
     const userData = sessionStorage.getItem("user");
@@ -68,10 +70,32 @@ export default function useAuthUser() {
     return !!user;
   };
 
+  const getBalances = async () => {
+    if (user) {
+      const dhiveClient = new dhive.Client([
+        "https://api.hive.blog",
+        "https://api.hivekings.com",
+        "https://anyx.io",
+        "https://api.openhive.network",
+      ]);
+      const account = await dhiveClient.database.getAccounts([user.name]);
+      if (account.length > 0) {
+        setHiveBalance(account[0].balance.split(" ")[0]);
+        setHbdBalance(account[0].hbd_balance.split(" ")[0]);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getBalances();
+  }, [user]);
+
   return {
     user,
     loginWithHive,
     logout,
     isLoggedIn,
+    hiveBalance,
+    hbdBalance,
   };
 }

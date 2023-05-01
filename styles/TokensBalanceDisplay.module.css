@@ -1,7 +1,6 @@
 .token_panel_container {
   display: flex;
   color: rgb(255, 255, 255);
-  padding-left: 25%;
 }
 
 .tokens_box {
@@ -18,6 +17,7 @@
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 2em;
+  color: white
 }
 
 .token_container {
