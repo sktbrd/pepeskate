@@ -12,7 +12,7 @@ export default function HiveLoginModal({ showModal, handleClose }) {
     await loginWithHive(username);
     setUsername("");
     handleClose();
-    router.push("/wallet");
+    router.push("/profile");
   };
 
   const handleInputChange = (event) => {

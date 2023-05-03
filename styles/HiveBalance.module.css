@@ -96,12 +96,13 @@
     /* Desktop layout */
     .token_panel_container {
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
   
     .token_container {
       margin: 0;
+      flex-direction: column;
+
     }
   }
   
@@ -111,4 +112,3 @@
       flex-direction: column;
     }
   }
-  

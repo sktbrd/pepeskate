@@ -1,0 +1,94 @@
+.channelProfile {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .tabBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    justify-content: right;
+  }
+  
+  .tabBarLeft {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .tabDropdown {
+    position: relative;
+  }
+  
+  .tabDropdownButton {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .tabDropdownContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .tabDropdownItem {
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .tabDropdownItem:hover {
+    background-color: #f0f0f0;
+  }
+  .tab {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  .tab:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .tab.active {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .tabContent {
+    background-color: #efd423;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media screen and (max-width: 600px) {
+    .tabBarRight {
+      display: none;
+    }
+  
+    .tabDropdownButton {
+      font-size: 24px;
+    }
+  
+    .tabDropdownContent {
+      width: 100%;
+    }
+  }
+  

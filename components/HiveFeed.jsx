@@ -9,7 +9,7 @@ const client = new Client([
   "https://api.pharesim.me",
 ]);
 
-export default function HiveBlog() {
+export default function HiveBlog(query) {
   const [posts, setPosts] = useState([]);
   const [tag, setTag] = useState("skatehive"); // set the default search author to "skatehive"
   const [isLoading, setIsLoading] = useState(false);

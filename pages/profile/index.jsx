@@ -1,36 +1,51 @@
-import { useEffect, useState } from "react";
-import { getDhive } from "../_app";
+import { useState, useEffect } from "react";
+import useAuthUser from "../api/UseAuthUser.js";
+import styles from "../../styles/Profile.module.css";
+import AuthorBlog from "../../components/AuthorSearch.jsx";
+import ChannelProfile from "../../components/navigation/channelMenu.jsx";
 
-export default function Profile({ username }) {
-  const [user, setUser] = useState(null);
-  const { dhive } = getDhive();
+export default function HiveBalanceDisplay() {
+  const { user } = useAuthUser();
+  const [isLoading, setIsLoading] = useState(true);
+  const [coverImageUrl, setCoverImageUrl] = useState(null);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const dhiveClient = new dhive.Client([
-        "https://api.hive.blog",
-        "https://api.hivekings.com",
-        "https://anyx.io",
-        "https://api.openhive.network",
-      ]);
-      const [userData] = await dhiveClient.database.getAccounts([username]);
-      setUser(userData);
-    };
-    fetchUser();
-  }, [username]);
-
-  if (!user) {
-    return <div>Roll a joint...</div>;
-  }
+    if (user) {
+      const metadata = JSON.parse(user.posting_json_metadata);
+      const coverImage = metadata.profile.cover_image;
+      setCoverImageUrl(coverImage);
+      setIsLoading(false);
+    }
+  }, [user]);
 
   return (
-    <div className="profile">
-      <h1>{user.name}</h1>
-      <img src={user.profile_image} alt="Profile" />
-      <p>{user.about}</p>
-      <ul>
-        <li>Name: {user.name}</li>
-      </ul>
+    <div>
+      {isLoading ? (
+        <div>Roll a Joint...</div>
+      ) : (
+        <>
+          <div
+            className={styles.cover}
+            style={{
+              backgroundImage: `url(${coverImageUrl})`
+            }}
+          />
+          <div className={styles.avatar_container}>
+            <img
+              src={`https://images.hive.blog/u/${user.name}/avatar`}
+              alt="profile avatar"
+              className={styles.avatar}
+            />
+            <div className={styles.name}>{user.name}</div>
+          </div>
+          <div>
+            <ChannelProfile></ChannelProfile>
+          </div>
+          <div>
+          <AuthorBlog></AuthorBlog>
+          </div>
+        </>
+      )}
     </div>
   );
 }

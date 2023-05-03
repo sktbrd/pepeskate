@@ -18,15 +18,14 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
 
   const handleCloseMenu = (e, path) => {
     setShowSideMenu(false);
-    console.clear()
-    console.log("clicked")
+    console.log("closed menu")
   };
 
   const handleHiveLogin = (username) => {
     setUsername("");
     setShowHiveLoginModal(false);
     console.log(`Logged in as ${user.name}`);
-    router.push("/wallet");
+    router.push("/profile");
   }
 
   useEffect(() => {
@@ -42,8 +41,6 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       }}
     >
       <div className={styles.hamburgerButton} onClick={handleCloseMenu}>
-        <div className={styles.bar}></div>
-        <div className={styles.bar}></div>
         <div className={styles.bar}></div>
       </div>
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
@@ -64,7 +61,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
             <FaUpload /> Logout
           </li>
         ) : (
-          <li onClick={() => setShowHiveLoginModal(true)}>
+          <li className={styles.iconMenu} onClick={() => setShowHiveLoginModal(true)}>
             <FaUpload /> HiveLogin
           </li>
         )}

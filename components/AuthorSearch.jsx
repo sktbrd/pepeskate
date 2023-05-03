@@ -1,20 +1,30 @@
 import { useEffect, useState } from "react";
 import { Client } from "@hiveio/dhive";
 import styles from "../styles/HiveFeed.module.css";
+import useAuthUser from "../pages/api/UseAuthUser.js";
 
 const client = new Client([
   "https://api.hive.blog",
   "https://anyx.io",
-  "https://api.pharesim.me",
+  "https://api.pharesim.me"
 ]);
 
-export default function HiveBlog() {
+export default function AuthorBlog() {
+  const { user } = useAuthUser();
+  console.log(user);
+  const [tag, setTag] = useState(user?.name || "web-gnar");
   const [posts, setPosts] = useState([]);
-  const [tag, setTag] = useState("skatehive"); // set the default search author to "skatehive"
   const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("");
 
   const fetchPosts = async () => {
     setIsLoading(true);
+  
+    // Check if user is not null before setting the username
+    if (user !== null) {
+      setTag(user.name)
+      console.log(username)
+    }
   
     try {
       const query = {
@@ -37,22 +47,13 @@ export default function HiveBlog() {
     setIsLoading(false);
   };
   
+  
   useEffect(() => {
     fetchPosts();
   }, [tag]);
 
   return (
-    <div className={styles.header}>
-      <h2>Author</h2>
-      <div className={styles.tag_selector}>
-        <input
-          type="text"
-          placeholder="Search"
-          value={tag}
-          onChange={(e) => setTag(e.target.value)}
-        />
-        <button onClick={fetchPosts}>Search</button>
-      </div>
+    <div>
       {isLoading ? (
         <div>Roll a joint...</div>
       ) : (
