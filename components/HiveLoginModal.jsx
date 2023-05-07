@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuthUser from "../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
+import styles from "../styles/PostModal.module.css"
 
 export default function HiveLoginModal({ showModal, handleClose }) {
   const [username, setUsername] = useState("");
@@ -22,7 +23,7 @@ export default function HiveLoginModal({ showModal, handleClose }) {
   return (
     <>
       {showModal && (
-        <div className="modal">
+        <div className={styles.modal}>
           <form onSubmit={handleSubmit}>
             <div className="modal-content">
               <span className="close" onClick={handleClose}>
@@ -39,7 +40,7 @@ export default function HiveLoginModal({ showModal, handleClose }) {
                   required
                 />
               </div>
-              <button type="submit" className="btn">
+              <button type="submit" className={styles.login_btn}>
                 Login
               </button>
             </div>

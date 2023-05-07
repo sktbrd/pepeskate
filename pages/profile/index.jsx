@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useAuthUser from "../api/UseAuthUser.js";
 import styles from "../../styles/Profile.module.css";
-import AuthorBlog from "../../components/AuthorSearch.jsx";
+import AuthorBlog from "../../components/profile/AuthorSearch.jsx";
 import ChannelProfile from "../../components/navigation/channelMenu.jsx";
 
 export default function HiveBalanceDisplay() {

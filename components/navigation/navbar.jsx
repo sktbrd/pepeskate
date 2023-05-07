@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <a href="/" target="_blank">
-        <img className={styles.logo} src="/hiveLogo2048.png" alt="Hive Logo" />
+        <img className={styles.logo} src="/alchemy_logo.png" alt="Hive Logo" />
       </a>
       {/* <div className={styles.searchBar}>
         <SearchBar onSearch={handleSearch} />

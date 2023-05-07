@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Client } from "@hiveio/dhive";
-import styles from "../styles/HiveFeed.module.css";
-import useAuthUser from "../pages/api/UseAuthUser.js";
+import styles from "../../styles/HiveFeed.module.css";
+import useAuthUser from "../../pages/api/UseAuthUser.js";
 
 const client = new Client([
   "https://api.hive.blog",
