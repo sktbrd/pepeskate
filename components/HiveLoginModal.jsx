@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuthUser from "../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
-import styles from "../styles/PostModal.module.css"
+import styles from "../styles/PostModal.module.css";
 
 export default function HiveLoginModal({ showModal, handleClose }) {
   const [username, setUsername] = useState("");
@@ -18,6 +18,10 @@ export default function HiveLoginModal({ showModal, handleClose }) {
 
   const handleInputChange = (event) => {
     setUsername(event.target.value);
+  };
+
+  const handleSignUp = () => {
+    window.open("https://discord.gg/skatehive", "_blank");
   };
 
   return (
@@ -42,6 +46,9 @@ export default function HiveLoginModal({ showModal, handleClose }) {
               </div>
               <button type="submit" className={styles.login_btn}>
                 Login
+              </button>
+              <button type="button" onClick={handleSignUp} className={styles.login_btn}>
+                Sign Up
               </button>
             </div>
           </form>

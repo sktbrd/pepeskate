@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useAuthUser from "../api/UseAuthUser.js";
 import styles from "../../styles/Profile.module.css";
-import AuthorBlog from "../../components/profile/AuthorSearch.jsx";
-import ChannelProfile from "../../components/navigation/channelMenu.jsx";
+import AuthorBlog from "../../components/profile/AuthorBlog.jsx";
+import ChannelNav from "../../components/profile/channelMenu.jsx";
 
 export default function HiveBalanceDisplay() {
   const { user } = useAuthUser();
@@ -39,10 +39,7 @@ export default function HiveBalanceDisplay() {
             <div className={styles.name}>{user.name}</div>
           </div>
           <div>
-            <ChannelProfile></ChannelProfile>
-          </div>
-          <div>
-          <AuthorBlog></AuthorBlog>
+            <ChannelNav></ChannelNav>
           </div>
         </>
       )}

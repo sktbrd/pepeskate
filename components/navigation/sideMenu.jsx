@@ -37,12 +37,9 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       className={styles.sideMenu}
       style={{
         width: showSideMenu ? "20%" : "50px",
-        transition: "all 0.2s ease-in-out",
+        transition: "all 0.1s ease-in-out",
       }}
     >
-      <div className={styles.hamburgerButton} onClick={handleCloseMenu}>
-        <div className={styles.bar}></div>
-      </div>
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
         <li onClick={(e) => handleCloseMenu (e, "/")}>
         <Link href={"/"}><FaHome /> Home</Link>
