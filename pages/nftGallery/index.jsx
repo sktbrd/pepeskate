@@ -1,4 +1,4 @@
-import NFTGallery from "../../components/nftGallery";
+import NFTGallery from "../../components/wallet/nftGallery";
 
 export default function nftWallet() {
   return (
