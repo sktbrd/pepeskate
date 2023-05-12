@@ -3,20 +3,20 @@ import useAuthUser from "../../pages/api/UseAuthUser.js";
 import styles from "../../styles/HiveBalance.module.css";
 
 export default function HiveBalanceDisplay() {
-  const { user } = useAuthUser();
+  const { hiveuser } = useAuthUser();
   const [hiveBalance, setHiveBalance] = useState(0);
   const [hbdBalance, setHbdBalance] = useState(0);
   const [savingsBalance, setSavingsBalance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (user) {
-      setHiveBalance(user.balance);
-      setHbdBalance(user.hbd_balance);
-      setSavingsBalance(user.savings_hbd_balance)
+    if (hiveuser) {
+      setHiveBalance(hiveuser.balance);
+      setHbdBalance(hiveuser.hbd_balance);
+      setSavingsBalance(hiveuser.savings_hbd_balance)
       setIsLoading(false);
     }
-  }, [user]);
+  }, [hiveuser]);
 
   return (
     <div className={styles.tokens_box}>
@@ -27,11 +27,11 @@ export default function HiveBalanceDisplay() {
         <>
           <div className={styles.avatar_container}>
             <img
-              src={`https://images.hive.blog/u/${user.name}/avatar`}
+              src={`https://images.hive.blog/u/${hiveuser.name}/avatar`}
               alt="profile avatar"
               className={styles.avatar}
             />
-            <div className={styles.name}>{user.name}</div>
+            <div className={styles.name}>{hiveuser.name}</div>
           </div>
           <ul className={styles.token_panel_container}>
             <li className={styles.token_container}>

@@ -36,7 +36,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     <div
       className={styles.sideMenu}
       style={{
-        width: showSideMenu ? "30%" : "50px",
+        width: showSideMenu ? "40%" : "10%",
         transition: "all 0.1s ease-in-out",
       }}
     >
@@ -56,9 +56,6 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         )}
         <li onClick={(e) => handleCloseMenu(e, "/post")}>
           <Link href={"/post"}><FaUpload /> Post </Link> 
-        </li>
-        <li onClick={(e) => handleCloseMenu(e, "https://discord.gg/skatehive")}>
-          <Link href={"https://discord.gg/skatehive"}><FaUser /> Sign Up </Link> 
         </li>
         <li onClick={(e) => handleCloseMenu(e, "/map")}>
           <Link href={"/post"}><FaMap /> Go Skate </Link> 
@@ -92,16 +89,11 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaUpload />
           </div>
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaUser />
-          </div>
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaUser />
-          </div>
         </div>
       )}
     </div>
-  );      
+  );
+      
 }
 
 export default SideMenu

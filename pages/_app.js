@@ -28,12 +28,12 @@ const { chains, provider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "SkateHive",
+  appName: "PepeSkate",
   chains,
 });
 
 const wagmiClient = createClient({
-  autoConnect: true,
+  autoConnect: false,
   connectors,
   provider,
 });
@@ -43,7 +43,6 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const user = sessionStorage.getItem("user");
-	console.log(sessionStorage.getItem("user"));
     if (user) {
       setLoggedIn(true);
     }

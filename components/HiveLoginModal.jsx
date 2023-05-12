@@ -24,6 +24,12 @@ export default function HiveLoginModal({ showModal, handleClose }) {
     window.open("https://discord.gg/skatehive", "_blank");
   };
 
+  const handleLogin = () => {
+    // Refresh the page after 7 seconds
+    setTimeout(() => {
+      window.location.reload();
+    }, 7000);
+  };
   return (
     <>
       {showModal && (
@@ -44,7 +50,7 @@ export default function HiveLoginModal({ showModal, handleClose }) {
                   required
                 />
               </div>
-              <button type="submit" className={styles.login_btn}>
+              <button type="submit" onClick={handleLogin} className={styles.login_btn}>
                 Login
               </button>
               <button type="button" onClick={handleSignUp} className={styles.login_btn}>
