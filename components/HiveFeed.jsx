@@ -53,7 +53,7 @@ export default function HiveBlog(query) {
   };
 
   return (
-  <div className={styles.tag_selector}>
+  <div>
     {/* <div className={styles.search_bar}>
       <input
         type="text"
@@ -73,7 +73,9 @@ export default function HiveBlog(query) {
       </div>
     )}
     {isLoading ? (
-      <div>Roll a joint...</div>
+      <center>
+        <h2>Roll a joint...</h2>
+      </center>
     ) : (
       <div className={styles.posts}>
         {posts.map((post) => (

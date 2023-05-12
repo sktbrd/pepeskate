@@ -11,24 +11,16 @@ const client = new Client([
 
 export default function AuthorBlog() {
   const { user } = useAuthUser();
-  console.log(user);
-  const [tag, setTag] = useState(user?.name || "web-gnar");
+  const username = user ? user.name : "";
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [username, setUsername] = useState("");
 
   const fetchPosts = async () => {
     setIsLoading(true);
   
-    // Check if user is not null before setting the username
-    if (user !== null) {
-      setTag(user.name)
-      console.log(username)
-    }
-  
     try {
       const query = {
-        tag: tag,
+        tag: username,
         limit: 30,
       };
       const result = await client.database.getDiscussions("blog", query);
@@ -47,10 +39,9 @@ export default function AuthorBlog() {
     setIsLoading(false);
   };
   
-  
   useEffect(() => {
     fetchPosts();
-  }, [tag]);
+  }, [username]);
 
   return (
     <div>
@@ -63,7 +54,7 @@ export default function AuthorBlog() {
               <img src={post.thumbnail} alt="post thumbnail" />
               <div className={styles.postInfo}>
                 <h3>{post.title}</h3>
-                <p>Author: {post.author}</p>
+                <p>Skater: {post.author}</p>
               </div>
             </div>
           ))}

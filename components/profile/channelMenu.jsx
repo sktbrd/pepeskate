@@ -1,6 +1,8 @@
 import { useState } from "react";
 import style from "../../styles/ChannelMenu.module.css";
 import AuthorBlog from "./AuthorBlog";
+import NFTGallery from "../wallet/nftGallery.jsx"
+import About from "./About.jsx"
 
 const ChannelNav = () => {
   const [activeTab, setActiveTab] = useState("videos");
@@ -18,9 +20,9 @@ const ChannelNav = () => {
       case "blog":
         return <AuthorBlog />;
       case "about":
-        return <ChannelAbout />;
+        return <About />;
       case "nfts":
-        return <ChannelNFTs />;
+        return <NFTGallery />;
       case "drops":
         return <ChannelDrops />;
       default:

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaUpload, FaWallet, FaHome, FaUser, FaCog } from 'react-icons/fa';
+import { FaMap, FaUpload, FaWallet, FaHome, FaUser, FaCog } from 'react-icons/fa';
 import styles from "../../styles/sideMenu.module.css";
 import Link from "next/link";
 import HiveLoginModal from "../HiveLoginModal";
@@ -36,22 +36,32 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     <div
       className={styles.sideMenu}
       style={{
-        width: showSideMenu ? "20%" : "50px",
+        width: showSideMenu ? "30%" : "50px",
         transition: "all 0.1s ease-in-out",
       }}
     >
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
-        <li onClick={(e) => handleCloseMenu (e, "/")}>
-        <Link href={"/"}><FaHome /> Home</Link>
+        <li onClick={(e) => handleCloseMenu(e, "/")}>
+          <Link href={"/"}><FaHome /> Home</Link>
         </li>
-        <li onClick={(e) => handleCloseMenu (e, "/profile")}>
-        <Link href={"/profile"}><FaUser /> {username ? username : "Profile"}</Link>
-        </li>
-        <li onClick={(e) => handleCloseMenu (e, "/wallet")}>
-          <Link href={"/wallet"}><FaWallet /> Wallet</Link>
-        </li>
-        <li onClick={(e) => handleCloseMenu (e, "/post")}>
+        {user && (
+          <li onClick={(e) => handleCloseMenu(e, "/profile")}>
+            <Link href={"/profile"}><FaUser /> {username ? username : "Profile"}</Link>
+          </li>
+        )}
+        {user && (
+          <li onClick={(e) => handleCloseMenu(e, "/wallet")}>
+            <Link href={"/wallet"}><FaWallet /> Wallet</Link>
+          </li>
+        )}
+        <li onClick={(e) => handleCloseMenu(e, "/post")}>
           <Link href={"/post"}><FaUpload /> Post </Link> 
+        </li>
+        <li onClick={(e) => handleCloseMenu(e, "https://discord.gg/skatehive")}>
+          <Link href={"https://discord.gg/skatehive"}><FaUser /> Sign Up </Link> 
+        </li>
+        <li onClick={(e) => handleCloseMenu(e, "/map")}>
+          <Link href={"/post"}><FaMap /> Go Skate </Link> 
         </li>
         {user ? (
           <li onClick={logout}>
@@ -69,19 +79,29 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaHome />
           </div>
+          {user && (
+            <div className={styles.menuItems} onClick={handleOpenMenu}>
+              <FaUser />
+            </div>
+          )}
+          {user && (
+            <div className={styles.menuItems} onClick={handleOpenMenu}>
+              <FaWallet />
+            </div>
+          )}
+          <div className={styles.menuItems} onClick={handleOpenMenu}>
+            <FaUpload />
+          </div>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaUser />
           </div>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaWallet />
-          </div>
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaUpload />
+            <FaUser />
           </div>
         </div>
       )}
     </div>
-  );
+  );      
 }
 
 export default SideMenu
