@@ -1,0 +1,40 @@
+.container {
+    margin: 20px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    color: #00ff00; /* Green color */
+  }
+  
+  .loading {
+    font-size: 18px;
+    color: #ff00ff; /* Magenta color */
+  }
+  
+  .tableWrapper {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    background-color: #000; /* Black background color */
+    color: #00ff00; /* Green text color */
+  }
+  
+  .table td,
+  .table th {
+    padding: 10px;
+    border: 1px solid #00ff00; /* Green border color */
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .value {
+    text-align: right;
+  }
+  
