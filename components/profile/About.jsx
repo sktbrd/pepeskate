@@ -37,7 +37,6 @@ export default function About() {
         <div className={styles.loading}>Loading...</div>
       ) : (
         <div>
-          <h1 className={styles.heading}>User Account Resume</h1>
           <h1>{profileAbout}</h1>
 
           <table className={styles.table}>

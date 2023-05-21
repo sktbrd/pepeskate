@@ -5,7 +5,7 @@ import NFTGallery from "../wallet/nftGallery.jsx"
 import About from "./About.jsx"
 
 const ChannelNav = () => {
-  const [activeTab, setActiveTab] = useState("videos");
+  const [activeTab, setActiveTab] = useState("about");
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleTabClick = (tabName) => {
@@ -15,10 +15,10 @@ const ChannelNav = () => {
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case "videos":
-        return <ChannelVideos />;
       case "blog":
         return <AuthorBlog />;
+      case "videos":
+        return <ChannelVideos />;
       case "about":
         return <About />;
       case "nfts":
@@ -40,11 +40,11 @@ const ChannelNav = () => {
             </div>
             {showDropdown && (
               <div className={style.tabDropdownContent}>
-                <div onClick={() => handleTabClick("videos")} className={style.tabDropdownItem}>
-                  Videos
-                </div>
                 <div onClick={() => handleTabClick("blog")} className={style.tabDropdownItem}>
                   Blog
+                </div>
+                <div onClick={() => handleTabClick("videos")} className={style.tabDropdownItem}>
+                  Videos
                 </div>
                 <div onClick={() => handleTabClick("about")} className={style.tabDropdownItem}>
                   About
@@ -59,16 +59,16 @@ const ChannelNav = () => {
             )}
           </div>
           <div
-            onClick={() => handleTabClick("videos")}
-            className={`${style.tab} ${activeTab === "videos" && style.active}`}
-          >
-            Videos
-          </div>
-          <div
             onClick={() => handleTabClick("blog")}
             className={`${style.tab} ${activeTab === "blog" && style.active}`}
           >
             Blog
+          </div>
+          <div
+            onClick={() => handleTabClick("videos")}
+            className={`${style.tab} ${activeTab === "videos" && style.active}`}
+          >
+            Videos
           </div>
           <div
             onClick={() => handleTabClick("about")}

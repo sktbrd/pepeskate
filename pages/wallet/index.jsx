@@ -5,9 +5,11 @@ import HiveBalanceDisplay from "../../components/wallet/hiveBalance";
 import styles from "../../styles/NftGallery.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { useAccount } from "wagmi";
 
 export default function nftWallet() {
   const [activeTab, setActiveTab] = useState(0);
+  const { address, isConnected } = useAccount(); 
 
   return (
     <div>
@@ -19,13 +21,13 @@ export default function nftWallet() {
           <Tab>NFTs</Tab>
         </TabList>
         <TabPanel>
-          <TokensBalancePanel walletAddress={"sktbrd.eth"} chain={"ETH_MAINNET"} />
+          <TokensBalancePanel walletAddress={address} chain={"ETH_MAINNET"} />
           <div className={styles.balancePanel}>
             <HiveBalanceDisplay />
           </div>
         </TabPanel>
         <TabPanel>
-          <NFTGallery />
+          <NFTGallery  />
         </TabPanel>
       </Tabs>
     </div>

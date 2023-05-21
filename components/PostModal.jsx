@@ -1,9 +1,11 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styles from "../styles/PostModal.module.css";
+import useAuthUser from "../pages/api/UseAuthUser";
 
-export default function PostModal({ title, content, onClose }) {
+export default function PostModal({ title, content, author, permlink, onClose }) {
   const [isOpen, setIsOpen] = useState(true);
+  const { user } = useAuthUser();
 
   const handleClose = () => {
     setIsOpen(false);
@@ -43,6 +45,9 @@ export default function PostModal({ title, content, onClose }) {
     image: ({ src, alt }) => <img src={src} alt={alt} />,
   };
 
+  // Console.log current username
+  console.log("Current username:", user?.name);
+
   return (
     <>
       {isOpen && (
@@ -55,6 +60,7 @@ export default function PostModal({ title, content, onClose }) {
           </button>
           <div className={styles.modalContainer}>
             <div className={styles.modalHeader}>
+              <h2>{author}</h2>
               <h3>{title}</h3>
             </div>
             <div className={`${styles.modalContent} ${styles.scrollable}`}>

@@ -68,6 +68,8 @@ export default function HiveBlog(query) {
         <PostModal
           title={selectedPost.title}
           content={selectedPost.body}
+          permlink={selectedPost.permlink}
+          author={selectedPost.author}
           onClose={handleModalClose}
         />
       </div>

@@ -33,7 +33,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiClient = createClient({
-  autoConnect: false,
+  autoConnect: true,
   connectors,
   provider,
 });
@@ -41,12 +41,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      setLoggedIn(true);
-    }
-  }, []);
+
 
   return (
     <WagmiConfig client={wagmiClient}>

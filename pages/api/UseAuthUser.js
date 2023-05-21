@@ -6,6 +6,12 @@ export default function useAuthUser() {
   const [user, setUser] = useState(null);
   const [hiveBalance, setHiveBalance] = useState(null);
   const [hbdBalance, setHbdBalance] = useState(null);
+  const dhiveClient = new dhive.Client([
+    "https://api.hive.blog",
+    "https://api.hivekings.com",
+    "https://anyx.io",
+    "https://api.openhive.network",
+  ]);
 
   useEffect(() => {
     const userData = sessionStorage.getItem("user");
@@ -24,13 +30,6 @@ export default function useAuthUser() {
       alert("Please enter your username");
       return;
     }
-
-    const dhiveClient = new dhive.Client([
-      "https://api.hive.blog",
-      "https://api.hivekings.com",
-      "https://anyx.io",
-      "https://api.openhive.network",
-    ]);
 
     const memo = username + Date.now();
 
@@ -72,12 +71,6 @@ export default function useAuthUser() {
 
   const getBalances = async () => {
     if (user) {
-      const dhiveClient = new dhive.Client([
-        "https://api.hive.blog",
-        "https://api.hivekings.com",
-        "https://anyx.io",
-        "https://api.openhive.network",
-      ]);
       const account = await dhiveClient.database.getAccounts([user.name]);
       if (account.length > 0) {
         setHiveBalance(account[0].balance.split(" ")[0]);
