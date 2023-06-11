@@ -2,6 +2,8 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import styles from "../styles/PostModal.module.css";
 import useAuthUser from "../pages/api/UseAuthUser";
+import voteOnContent from "../pages/api/voting.js";
+
 
 export default function PostModal({ title, content, author, permlink, onClose }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,13 +16,28 @@ export default function PostModal({ title, content, author, permlink, onClose })
     }
   };
 
+  const handleVote = async () => {
+    try {
+      await voteOnContent(user, author, permlink, 10000); // Adjust the weight value as needed
+      console.log("Vote successful!");
+    } catch (error) {
+      console.error("Vote failed:", error);
+      // Handle voting error
+    }
+  };
+
   const onNext = () => {
     console.log("testing arrow");
     console.log(content);
+    console.log(author);
   };
 
   const onPrev = () => {
     console.log("testing arrow");
+    console.log(user);
+    console.log(author);
+    console.log(permlink);
+    console.log(user?.name);
   };
 
   const excludedStrings = ["Watch on 3Speak", "<center>", "</center>"];
@@ -71,10 +88,7 @@ export default function PostModal({ title, content, author, permlink, onClose })
             <button className={styles.modalCloseButton} onClick={handleClose}>
               Close
             </button>
-            <button
-              className={styles.modalVoteButton}
-              onClick={() => console.log("vote clicked")}
-            >
+            <button className={styles.modalVoteButton} onClick={handleVote}>
               VOTE
             </button>
           </div>

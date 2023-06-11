@@ -2,8 +2,9 @@ import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Analytics } from '@vercel/analytics/react';  
 
+
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { useAccount, configureChains, createClient, WagmiConfig } from "wagmi";
 import {
   mainnet,
   polygon,
@@ -11,6 +12,8 @@ import {
   arbitrum,
   goerli,
 } from "wagmi/chains";
+
+import { UserProvider } from "../controllers/UserContext";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import MainLayout from "../layout/mainLayout";
@@ -40,6 +43,8 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
+  const { address, isConnected } = useAccount();
+  console.log(address)
 
 
 
@@ -51,7 +56,9 @@ function MyApp({ Component, pageProps }) {
         chains={chains}
       >
         <MainLayout loggedIn={loggedIn}>
+        <UserProvider>
           <Component {...pageProps} />
+        </UserProvider>
           <Analytics />
         </MainLayout>
       </RainbowKitProvider>
@@ -59,11 +66,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-const dhive = require("@hiveio/dhive");
 
-function getDhive() {
-  return { dhive };
-}
 
-export { WagmiConfig, RainbowKitProvider, getDhive }; //maybe I have to export dhive
+export { WagmiConfig, RainbowKitProvider}; //maybe I have to export dhive
 export default MyApp;

@@ -4,7 +4,7 @@ import styles from "../../styles/Profile.module.css";
 import AuthorBlog from "../../components/profile/AuthorBlog.jsx";
 import ChannelNav from "../../components/profile/channelMenu.jsx";
 
-export default function HiveBalanceDisplay() {
+export default function HiveProfile() {
   const { user } = useAuthUser();
   const [isLoading, setIsLoading] = useState(true);
   const [coverImageUrl, setCoverImageUrl] = useState(null);

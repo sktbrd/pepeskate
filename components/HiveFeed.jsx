@@ -17,29 +17,28 @@ export default function HiveBlog(query) {
 
   const fetchPosts = async () => {
     setIsLoading(true);
-  
+
     try {
       const query = {
         tag: tag,
         limit: 30,
       };
       const result = await client.database.getDiscussions("created", query);
-  
+
       const postsWithThumbnails = result.map((post) => {
         const metadata = JSON.parse(post.json_metadata);
         const thumbnail = metadata?.image?.[0];
         return { ...post, thumbnail };
       });
 
-  
       setPosts(postsWithThumbnails);
     } catch (error) {
       console.log(error);
     }
-  
+
     setIsLoading(false);
   };
-  
+
   useEffect(() => {
     fetchPosts();
   }, [tag]);
@@ -53,45 +52,49 @@ export default function HiveBlog(query) {
   };
 
   return (
-  <div>
-    {/* <div className={styles.search_bar}>
-      <input
-        type="text"
-        placeholder="Search"
-        value={tag}
-        onChange={(e) => setTag(e.target.value)}
-      />
-      <button onClick={fetchPosts}>Search</button>
-    </div> */}
-    {selectedPost && (
-      <div className={styles.modalContainer}>
-        <PostModal
-          title={selectedPost.title}
-          content={selectedPost.body}
-          permlink={selectedPost.permlink}
-          author={selectedPost.author}
-          onClose={handleModalClose}
+    <div>
+      {/* <div className={styles.search_bar}>
+        <input
+          type="text"
+          placeholder="Search"
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
         />
-      </div>
-    )}
-    {isLoading ? (
-      <center>
-        <h2>Roll a joint...</h2>
-      </center>
-    ) : (
-      <div className={styles.posts}>
-        {posts.map((post) => (
-          <a key={post.permlink} className={styles.post} onClick={() => handlePostClick(post)}>
-            <img src={post.thumbnail} alt="post thumbnail" />
-            <div className={styles.postInfo}>
-              <h3>{post.title}</h3>
-              <p>Author: {post.author}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    )}
-  </div>
-);
-
+        <button onClick={fetchPosts}>Search</button>
+      </div> */}
+      {selectedPost && (
+        <div className={styles.modalContainer}>
+          <PostModal
+            title={selectedPost.title}
+            content={selectedPost.body}
+            permlink={selectedPost.permlink}
+            author={selectedPost.author}
+            onClose={handleModalClose}
+          />
+        </div>
+      )}
+      {isLoading ? (
+        <center>
+          <h2>Roll a joint...</h2>
+        </center>
+      ) : (
+        <div className={styles.posts}>
+          {posts.map((post) => (
+            <a
+              key={post.permlink}
+              className={styles.post}
+              onClick={() => handlePostClick(post)}
+            >
+              <img src={post.thumbnail} alt="post thumbnail" />
+              <div className={styles.postInfo}>
+                <h3>{post.title}</h3>
+                {/* include author avatar here */}
+                <p>Author: {post.author}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }

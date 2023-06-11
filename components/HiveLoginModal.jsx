@@ -3,9 +3,9 @@ import useAuthUser from "../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
 import styles from "../styles/PostModal.module.css";
 
-export default function HiveLoginModal({ showModal, handleClose }) {
+function HiveLoginModal({ showModal, handleClose }) {
   const [username, setUsername] = useState("");
-  const { loginWithHive } = useAuthUser();
+  const { loginWithHive, user } = useAuthUser(); // Retrieve the user object from useAuthUser
   const router = useRouter();
 
   const handleSubmit = async (event) => {
@@ -25,11 +25,13 @@ export default function HiveLoginModal({ showModal, handleClose }) {
   };
 
   const handleLogin = () => {
+    console.log("User from dhive:", user); // Access user object from useAuthUser
     // Refresh the page after 7 seconds
-    setTimeout(() => {
-      window.location.reload();
-    }, 7000);
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 7000);
   };
+
   return (
     <>
       {showModal && (
@@ -50,10 +52,18 @@ export default function HiveLoginModal({ showModal, handleClose }) {
                   required
                 />
               </div>
-              <button type="submit" onClick={handleLogin} className={styles.login_btn}>
+              <button
+                type="submit"
+                onClick={handleLogin}
+                className={styles.login_btn}
+              >
                 Login
               </button>
-              <button type="button" onClick={handleSignUp} className={styles.login_btn}>
+              <button
+                type="button"
+                onClick={handleSignUp}
+                className={styles.login_btn}
+              >
                 Sign Up
               </button>
             </div>
@@ -63,3 +73,5 @@ export default function HiveLoginModal({ showModal, handleClose }) {
     </>
   );
 }
+
+export default HiveLoginModal;

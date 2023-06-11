@@ -36,28 +36,28 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     <div
       className={styles.sideMenu}
       style={{
-        width: showSideMenu ? "40%" : "10%",
+        width: showSideMenu ? "30%" : "10%",
         transition: "all 0.1s ease-in-out",
       }}
     >
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
-        <li onClick={(e) => handleCloseMenu(e, "/")}>
+        <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/")}>
           <Link href={"/"}><FaHome /> Home</Link>
         </li>
         {user && (
-          <li onClick={(e) => handleCloseMenu(e, "/profile")}>
+          <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/profile")}>
             <Link href={"/profile"}><FaUser /> {username ? username : "Profile"}</Link>
           </li>
         )}
         {user && (
-          <li onClick={(e) => handleCloseMenu(e, "/wallet")}>
+          <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/wallet")}>
             <Link href={"/wallet"}><FaWallet /> Wallet</Link>
           </li>
         )}
-        <li onClick={(e) => handleCloseMenu(e, "/post")}>
+        <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
           <Link href={"/post"}><FaUpload /> Post </Link> 
         </li>
-        <li onClick={(e) => handleCloseMenu(e, "/map")}>
+        <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/map")}>
           <Link href={"/post"}><FaMap /> Go Skate </Link> 
         </li>
         {user ? (
