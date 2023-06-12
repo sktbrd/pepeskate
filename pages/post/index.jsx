@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { KeychainSDK } from 'keychain-sdk';
 import * as dhive from '@hiveio/dhive';
+import styles from '../../styles/PostPage.module.css';
 
 const PostPage = () => {
   const [title, setTitle] = useState('');
@@ -10,7 +11,7 @@ const PostPage = () => {
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-
+  
   const handleBodyChange = (e) => {
     setBody(e.target.value);
   };
@@ -55,24 +56,34 @@ const PostPage = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>POST</h1>
-      <h2>Title:</h2>
-      <input type="text" placeholder="Enter a title" value={title} onChange={handleTitleChange} />
+      <div className={styles.inputGroup}>
+        <h2>Title:</h2>
+        <input type="text" placeholder="Enter a title" value={title} onChange={handleTitleChange} />
+      </div>
 
-      <h2>Body:</h2>
-      <textarea placeholder="Enter the post body" value={body} onChange={handleBodyChange}></textarea>
+      <div className={styles.inputGroup}>
+        <h2>Body:</h2>
+        <textarea placeholder="Enter the post body" value={body} onChange={handleBodyChange}></textarea>
+      </div>
 
-      <h2>Tags:</h2>
-      <input type="text" placeholder="Enter tags (space-separated)" value={tags} onChange={handleTagsChange} />
+      <div className={styles.inputGroup}>
+        <h2>Tags:</h2>
+        <input type="text" placeholder="Enter tags (space-separated)" value={tags} onChange={handleTagsChange} />
+      </div>
 
-      <h2>Posting Key:</h2>
-      <input type="password" placeholder="Enter posting key" id="postingKey" />
+      <div className={styles.inputGroup}>
+        <h2>Posting Key:</h2>
+        <input type="password" placeholder="Enter posting key" id="postingKey" />
+      </div>
 
-      <h2>Username:</h2>
-      <input type="text" placeholder="Enter username" id="username" />
+      <div className={styles.inputGroup}>
+        <h2>Username:</h2>
+        <input type="text" placeholder="Enter username" id="username" />
+      </div>
 
-      <button onClick={handleSubmit}>Submit</button>
+      <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

@@ -1,9 +1,46 @@
-/* PostPage.module.css */
-
-.bodyInput {
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  .h2 {
+    margin-bottom: 5px;
+    color: #fff;
+  }
+  
+  .textarea {
     width: 100%;
-    height: 200px;
-    padding: 8px;
-    font-size: 16px;
+    height: 700px; /* Increase the default height to 300px */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: vertical; /* Allow vertical resizing of the textarea */
+  }
+  
+  .submitButton {
+    padding: 10px 20px;
+    background-color: #f5f10b;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .submitButton:hover {
+    background-color: #1a73e8;
+  }
+  
+  .input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    width: 100%;
   }
   

@@ -57,9 +57,6 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
           <Link href={"/post"}><FaUpload /> Post </Link> 
         </li>
-        <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/map")}>
-          <Link href={"/post"}><FaMap /> Go Skate </Link> 
-        </li>
         {user ? (
           <li onClick={logout}>
             <FaUpload /> Logout
