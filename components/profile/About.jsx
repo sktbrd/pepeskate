@@ -27,6 +27,7 @@ export default function About() {
       const metadata = JSON.parse(user.posting_json_metadata);
       if (metadata && metadata.profile && metadata.profile.about) {
         setProfileAbout(metadata.profile.about);
+        console.log(metadata.profile)
       }
     }
   }, [user]);
@@ -37,11 +38,9 @@ export default function About() {
         <div className={styles.loading}>Loading...</div>
       ) : (
         <div>
-          <h1>{profileAbout}</h1>
-
           <table className={styles.table}>
             <tbody>
-              <ProfileItem label="ID" value={user.id} />
+              <ProfileItem label="Posting Key" value={user.posting.key_auths[0]} />
               <ProfileItem label="Name" value={user.name} />
               <ProfileItem label="About" value={profileAbout} />
             </tbody>

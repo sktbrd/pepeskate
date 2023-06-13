@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaMap, FaUpload, FaWallet, FaHome, FaUser, FaCog } from 'react-icons/fa';
+import { FaMap, FaUpload, FaWallet, FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import styles from "../../styles/sideMenu.module.css";
 import Link from "next/link";
 import HiveLoginModal from "../HiveLoginModal";
@@ -35,10 +35,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
   return (
     <div
       className={styles.sideMenu}
-      style={{
-        width: showSideMenu ? "30%" : "10%",
-        transition: "all 0.1s ease-in-out",
-      }}
+
     >
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
         <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/")}>
@@ -54,16 +51,18 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
             <Link href={"/wallet"}><FaWallet /> Wallet</Link>
           </li>
         )}
-        <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
-          <Link href={"/post"}><FaUpload /> Post </Link> 
-        </li>
+        {user && (
+          <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
+            <Link href={"/post"}><FaUpload /> Post </Link> 
+          </li>
+        )}
         {user ? (
           <li onClick={logout}>
-            <FaUpload /> Logout
+            <FaSignOutAlt /> Logout
           </li>
         ) : (
           <li className={styles.iconMenu} onClick={() => setShowHiveLoginModal(true)}>
-            <FaUpload /> HiveLogin
+            <FaUser /> HiveLogin
           </li>
         )}
         <HiveLoginModal showModal={showHiveLoginModal} handleClose={() => setShowHiveLoginModal(false)} handleHiveLogin={handleHiveLogin} setUsername={setUsername} />
@@ -73,24 +72,23 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaHome />
           </div>
-          {user && (
-            <div className={styles.menuItems} onClick={handleOpenMenu}>
-              <FaUser />
-            </div>
-          )}
+          <div className={styles.menuItems} onClick={handleOpenMenu}>
+            <FaUser />
+          </div>
           {user && (
             <div className={styles.menuItems} onClick={handleOpenMenu}>
               <FaWallet />
             </div>
           )}
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaUpload />
-          </div>
+          {user && (
+            <div className={styles.menuItems} onClick={handleOpenMenu}>
+              <FaUpload />
+            </div>
+          )}
         </div>
       )}
     </div>
   );
-      
 }
 
-export default SideMenu
+export default SideMenu;

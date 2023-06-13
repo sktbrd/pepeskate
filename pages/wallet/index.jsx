@@ -1,15 +1,15 @@
 import { useState } from "react";
-import NFTGallery from "../../components/wallet/nftGallery";
-import TokensBalancePanel from "../../components/wallet/tokensBalanceDisplay";
-import HiveBalanceDisplay from "../../components/wallet/hiveBalance";
-import styles from "../../styles/NftGallery.module.css";
+import NFTGallery from "../../components/wallet/NFTGallery";
+import TokensBalanceDisplay from "../../components/wallet/tokensBalanceDisplay";
+import HiveBalance from "../../components/wallet/hiveBalance";
+import styles from "../../styles/Wallet.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useAccount } from "wagmi";
 
-export default function nftWallet() {
+export default function Wallet() {
   const [activeTab, setActiveTab] = useState(0);
-  const { address, isConnected } = useAccount(); 
+  const { address, isConnected } = useAccount();
 
   return (
     <div>
@@ -21,13 +21,17 @@ export default function nftWallet() {
           <Tab>NFTs</Tab>
         </TabList>
         <TabPanel>
-          <TokensBalancePanel walletAddress={address} chain={"ETH_MAINNET"} />
-          <div className={styles.balancePanel}>
-            <HiveBalanceDisplay />
+          <div className={styles.token_panel_container}>
+            <div className={styles.tokens_box}>
+              <TokensBalanceDisplay walletAddress={address} chain={"ETH_MAINNET"} />
+            </div>
+            <div className={styles.balancePanel}>
+              <HiveBalance />
+            </div>
           </div>
         </TabPanel>
         <TabPanel>
-          <NFTGallery  />
+          <NFTGallery />
         </TabPanel>
       </Tabs>
     </div>

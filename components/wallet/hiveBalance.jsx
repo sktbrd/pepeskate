@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useAuthUser from "../../pages/api/UseAuthUser.js";
-import styles from "../../styles/HiveBalance.module.css";
+import styles from "../../styles/Wallet.module.css";
+import { FaCoins } from 'react-icons/fa';
 
 export default function HiveBalanceDisplay() {
   const { user } = useAuthUser();
@@ -33,17 +34,11 @@ export default function HiveBalanceDisplay() {
             />
             <div className={styles.name}>{user.name}</div>
           </div>
-          <ul className={styles.token_panel_container}>
-            <li className={styles.token_container}>
-              <div className={styles.image_container}>
-                <img
-                  src="https://cryptologos.cc/logos/hive-blockchain-hive-logo.png"
-                  alt="hive"
-                />
-              </div>
-              <div className={styles.token_name_sybol_container}>
+          <div className={styles.balance_container}>
+            <div className={styles.token_container}>
+              <div className={styles.token_info}>
                 {hiveBalance ? (
-                  <div className={styles.token_info}>
+                  <div className={styles.token_balance}>
                     <div className={styles.price}>
                       {hiveBalance.split(" ")[0]}
                     </div>
@@ -53,17 +48,14 @@ export default function HiveBalanceDisplay() {
                   <div>No HIVE balance found.</div>
                 )}
               </div>
-            </li>
-            <li className={styles.token_container}>
+            </div>
+            <div className={styles.token_container}>
               <div className={styles.image_container}>
-                <img
-                  src="https://i.ibb.co/6b4zHcW/image-removebg-preview.png"
-                  alt="hbd"
-                />
+                <FaCoins />
               </div>
-              <div className={styles.token_container}>
+              <div className={styles.token_info}>
                 {hbdBalance ? (
-                  <div className={styles.token_info}>
+                  <div className={styles.token_balance}>
                     <div className={styles.price}>
                       {hbdBalance.split(" ")[0]}
                     </div>
@@ -73,17 +65,11 @@ export default function HiveBalanceDisplay() {
                   <div>No HBD balance found.</div>
                 )}
               </div>
-            </li>
-            <li className={styles.token_container}>
-              <div className={styles.image_container}>
-                <img
-                  src="https://i.ibb.co/6b4zHcW/image-removebg-preview.png"
-                  alt="hbd"
-                />
-              </div>
-              <div className={styles.token_container}>
+            </div>
+            <div className={styles.token_container}>
+              <div className={styles.token_info}>
                 {savingsBalance ? (
-                  <div className={styles.token_info}>
+                  <div className={styles.token_balance}>
                     <div className={styles.price}>
                       {savingsBalance.split(" ")[0]}
                     </div>
@@ -93,8 +79,8 @@ export default function HiveBalanceDisplay() {
                   <div>No HBD balance found.</div>
                 )}
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </>
       )}
     </div>
