@@ -4,7 +4,6 @@ import styles from "../styles/PostModal.module.css";
 import useAuthUser from "../pages/api/UseAuthUser";
 import voteOnContent from "../pages/api/voting.js";
 
-
 export default function PostModal({ title, content, author, permlink, onClose }) {
   const [isOpen, setIsOpen] = useState(true);
   const { user } = useAuthUser();
@@ -27,13 +26,11 @@ export default function PostModal({ title, content, author, permlink, onClose })
   };
 
   const onNext = () => {
-    console.log("testing arrow");
     console.log(content);
     console.log(author);
   };
 
   const onPrev = () => {
-    console.log("testing arrow");
     console.log(user);
     console.log(author);
     console.log(permlink);
@@ -62,28 +59,20 @@ export default function PostModal({ title, content, author, permlink, onClose })
     image: ({ src, alt }) => <img src={src} alt={alt} />,
   };
 
-  // Console.log current username
   console.log("Current username:", user?.name);
 
   return (
     <>
       {isOpen && (
         <div className={styles.modalOverlay}>
-          <button className={styles.modalPrevButton} onClick={onPrev}>
-            {"<"}
-          </button>
-          <button className={styles.modalNextButton} onClick={onNext}>
-            {">"}
-          </button>
           <div className={styles.modalContainer}>
-            <div className={styles.modalHeader}>
+            <div className={styles.authorContainer}>
+              <img>{author.avatar}</img>
               <h2>{author}</h2>
               <h3>{title}</h3>
             </div>
-            <div className={`${styles.modalContent} ${styles.scrollable}`}>
-              <ReactMarkdown renderers={renderers}>
-                {processedContent}
-              </ReactMarkdown>
+            <div className={styles.modalContent}>
+              <ReactMarkdown renderers={renderers}>{processedContent}</ReactMarkdown>
             </div>
             <button className={styles.modalCloseButton} onClick={handleClose}>
               Close
@@ -91,6 +80,14 @@ export default function PostModal({ title, content, author, permlink, onClose })
             <button className={styles.modalVoteButton} onClick={handleVote}>
               VOTE
             </button>
+            <div className={styles.modalNavigation}>
+              <button className={styles.modalPrevButton} onClick={onPrev}>
+                {"<"}
+              </button>
+              <button className={styles.modalNextButton} onClick={onNext}>
+                {">"}
+              </button>
+            </div>
           </div>
         </div>
       )}
