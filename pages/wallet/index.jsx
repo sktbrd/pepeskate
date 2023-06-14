@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NFTGallery from "../../components/wallet/NFTGallery";
+import NFTGallery from "../../components/wallet/nftGallery";
 import TokensBalanceDisplay from "../../components/wallet/tokensBalanceDisplay";
 import HiveBalance from "../../components/wallet/hiveBalance";
 import styles from "../../styles/Wallet.module.css";
