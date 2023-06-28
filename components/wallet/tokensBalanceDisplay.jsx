@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../../styles/Wallet.module.css";
+import styles from "../../styles/EthWallet.module.css";
 
 // Define TokensBalancePanel component
 export default function TokensBalancePanel({ walletAddress, chain }) {
@@ -50,14 +50,14 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
         ) : (
           ""
         )}
-
+  
         {isLoading
           ? "Roll a joint..."
           : tokensBalance?.length &&
             tokensBalance?.map((token, i) => {
               return (
                 <div key={i} className={styles.token_container}>
-                  <div className={styles.token_name_logo}>
+                  <div className={styles.logo_and_name_container}>
                     {token.logo ? (
                       <div className={styles.image_container}>
                         <img src={token.logo} alt={""}></img>
@@ -81,4 +81,5 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
       </div>
     </div>
   );
+  
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import NFTGallery from "../../components/wallet/nftGallery";
 import TokensBalanceDisplay from "../../components/wallet/tokensBalanceDisplay";
 import HiveBalance from "../../components/wallet/hiveBalance";
-import styles from "../../styles/Wallet.module.css";
+import styles from "../../styles/EthWallet.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useAccount } from "wagmi";

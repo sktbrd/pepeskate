@@ -1,0 +1,66 @@
+.tokens_box {
+  background-color: rgb(12, 12, 12);
+  border-radius: 12px;
+  border: 1px solid #304f6f;
+  padding: 2em;
+  max-width: 900px; /* Use max-width instead of width to make the container responsive */
+  width: 100%; /* This will make the container take up the full width of its parent */
+  overflow: auto;
+}
+
+.token_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* This will make the items wrap to a new line if there's not enough space */
+  min-width: 300px; /* Adjust this to control the minimum width of the container */
+}
+
+
+.header {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 2em;
+  color: white;
+}
+
+.balance_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+
+.logo_and_name_container {
+  display: flex;
+  align-items: center;
+  gap: 1em; /* Adjust this to control the space between the logo and the name */
+}
+
+.image_container {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+.image_container img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.token_info {
+  display: flex;
+  gap: 0.5em;
+  font-weight: 700;
+  color: white;
+}
+
+.price {
+  color: rgb(243, 151, 14);
+}
+
+.token_symbol {
+  color: #ffffff;
+}

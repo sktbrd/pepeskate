@@ -32,7 +32,6 @@ export default function HiveBlog(query) {
       });
 
       setPosts(postsWithThumbnails);
-      console.log(posts)
     } catch (error) {
       console.log(error);
     }

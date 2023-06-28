@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useAuthUser from "../../pages/api/UseAuthUser.js";
-import styles from "../../styles/Wallet.module.css";
+import styles from "../../styles/HiveWallet.module.css";
 import { FaCoins } from 'react-icons/fa';
 
 export default function HiveBalanceDisplay() {

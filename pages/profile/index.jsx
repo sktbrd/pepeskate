@@ -29,7 +29,7 @@ export default function HiveProfile() {
   return (
     <div>
       {isLoading ? (
-        <div>Roll a Joint...</div>
+        <div><h3>Refresh the page after log in, our dev sucks !!</h3></div>
       ) : (
         <>
           {coverImageUrl && (

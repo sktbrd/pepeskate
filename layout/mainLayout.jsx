@@ -12,7 +12,6 @@ export default function Layout({ children }) {
         <SideMenu showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
         <main>{children}</main>
       </div>
-     
     </div>
   );
 }
