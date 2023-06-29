@@ -21,7 +21,7 @@ export default function HiveBlog(query) {
     try {
       const query = {
         tag: tag,
-        limit: 30,
+        limit: 100,
       };
       const result = await client.database.getDiscussions("created", query);
 
@@ -53,15 +53,6 @@ export default function HiveBlog(query) {
 
   return (
     <div>
-      {/* <div className={styles.search_bar}>
-        <input
-          type="text"
-          placeholder="Search"
-          value={tag}
-          onChange={(e) => setTag(e.target.value)}
-        />
-        <button onClick={fetchPosts}>Search</button>
-      </div> */}
       {selectedPost && (
         <div className={styles.modalContainer}>
           <PostModal
@@ -85,11 +76,19 @@ export default function HiveBlog(query) {
               className={styles.post}
               onClick={() => handlePostClick(post)}
             >
-              <img src={post.thumbnail} alt="post thumbnail" />
-              <div className={styles.postInfo}>
-                <h3>{post.title}</h3>
-                {/* include author avatar here */}
-                <p>Author: {post.author}</p>
+                <div className={styles.postInfo}>
+                <div className={styles.authorInfo}>
+                  <img
+                    src={`https://images.ecency.com/webp/u/${post.author}/avatar/small`}
+                    alt="author avatar"
+                    className={styles.authorAvatar}
+                  />
+                  <p className={styles.authorName}>{post.author}</p>
+                </div>
+                <br></br>
+              <img src={post.thumbnail} alt="post thumbnail" className={styles.postThumbnail} />
+              <br></br>
+                <p className={styles.postTitle}>{post.title}</p>
               </div>
             </a>
           ))}
