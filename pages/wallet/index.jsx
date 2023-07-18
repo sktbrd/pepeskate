@@ -28,6 +28,9 @@ export default function Wallet() {
             <div className={styles.balancePanel}>
               <HiveBalance />
             </div>
+            <div className={styles.third_component}>
+              {/* Add your third component here */}
+            </div>
           </div>
         </TabPanel>
         <TabPanel>

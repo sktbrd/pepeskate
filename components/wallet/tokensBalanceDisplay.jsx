@@ -41,7 +41,10 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
   // Render TokensBalancePanel component
   return (
     <div className={styles.token_panel_container}>
+      
       <div className={styles.tokens_box}>
+      <div className={styles.header}>EVM Balance</div>
+
         {address?.length ? (
           <div className={styles.header}>
             {address?.slice(0, 6)}

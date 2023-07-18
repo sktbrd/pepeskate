@@ -9,6 +9,8 @@ export default function HiveBalanceDisplay() {
   const [hbdBalance, setHbdBalance] = useState(0);
   const [savingsBalance, setSavingsBalance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [toAddress, setToAddress] = useState("");
+  const [amount, setAmount] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -18,6 +20,19 @@ export default function HiveBalanceDisplay() {
       setIsLoading(false);
     }
   }, [user]);
+
+  const handleTransfer = async () => {
+    if (window.hive_keychain && user) {
+      // Ensure the amount is a string with 3 decimal places
+      const formattedAmount = parseFloat(amount).toFixed(3);
+
+      window.hive_keychain.requestTransfer(user.name, toAddress, formattedAmount, "#Test Keychain SDK transfer(will be encrypted)", "HIVE", response => {
+        console.log(response);
+      }, false);
+    } else {
+      console.log("Hive Keychain extension not installed, not enabled, or no user connected.");
+    }
+  }
 
   return (
     <div className={styles.tokens_box}>
@@ -81,6 +96,9 @@ export default function HiveBalanceDisplay() {
               </div>
             </div>
           </div>
+          <input type="text" value={toAddress} onChange={(e) => setToAddress(e.target.value)} placeholder="To Address" />
+          <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
+          <button onClick={handleTransfer}>Send Hive</button>
         </>
       )}
     </div>

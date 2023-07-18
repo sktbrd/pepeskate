@@ -64,3 +64,13 @@
 .token_symbol {
   color: #ffffff;
 }
+
+.token_panel_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.third_component {
+  border: 1px solid black;
+  flex: 1;
+}
