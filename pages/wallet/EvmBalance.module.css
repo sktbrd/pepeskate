@@ -1,5 +1,4 @@
 .tokens_box {
-  background-color: rgb(12, 12, 12);
   padding: 2em;
   max-width: 900px; /* Use max-width instead of width to make the container responsive */
   width: 100%; /* This will make the container take up the full width of its parent */

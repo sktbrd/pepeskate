@@ -1,16 +1,39 @@
 .modal {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1000;
-	background-color: rgb(228, 15, 15);
-	padding: 10px;
+	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
+	background-color: #f0f0f0;
+	color: #333;
+	width: 80%; /* Set the width of the modal */
+}
+
+.span {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	color: rgb(16, 188, 16);
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
   
+
+
 .login_btn {
-color: red; 
-background-color: red;
+	background-color: limegreen;
+	font-family: 'Courier New', Courier, monospace;
+	color: #000000;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	width: 100%; /* Make the buttons take up the full width of the modal */
+}
+
+.login_btn:hover {
+	background-color: #555;
 }

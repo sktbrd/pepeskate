@@ -1,5 +1,4 @@
 .tokens_box {
-  background-color: rgb(12, 12, 12);
   border-radius: 12px;
   border: 1px solid limegreen;
   padding: 2em;
@@ -53,3 +52,8 @@
   border-radius: 20px;
   border: 5px solid limegreen;
 }
+
+.name {
+  color: limegreen ;
+}
+

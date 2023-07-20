@@ -8,6 +8,7 @@ export default function HiveProfile() {
   const { user } = useAuthUser();
   const [isLoading, setIsLoading] = useState(true);
   const [coverImageUrl, setCoverImageUrl] = useState(null);
+  const [url, setUrl] = useState(""); // Add this line
 
   useEffect(() => {
     const fetchCoverImage = async () => {
@@ -24,14 +25,30 @@ export default function HiveProfile() {
     };
 
     fetchCoverImage();
+    setUrl(window.location.href); // Add this line
   }, [user]);
 
   return (
     <div>
       {isLoading ? (
-        <div><h3>Refresh the page after log in, our dev sucks !!</h3></div>
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          padding: "10px",
+          color: "limegreen",
+          textAlign: "center"
+        }}>
+          <a href={url}> {/* Use the url state variable here */}
+            <img src="https://i.gifer.com/origin/f1/f1a737e4cfba336f974af05abab62c8f_w200.gif" alt="" />
+          </a>
+          <h2 style={{
+          color: "limegreen",     
+        }}>Click in the Pepe Head to enter the pepeskate world</h2>
+        </div>
       ) : (
-        <>
+        <div className={styles.profile_container}>
           {coverImageUrl && (
             <div
               className={styles.cover}
@@ -48,11 +65,11 @@ export default function HiveProfile() {
             />
             <div className={styles.name}>{user.name}</div>
           </div>
-          <div>
-            <ChannelNav></ChannelNav>
-          </div>
-        </>
+        </div>
       )}
+      <div>
+        <ChannelNav></ChannelNav>
+      </div>
     </div>
   );
 }

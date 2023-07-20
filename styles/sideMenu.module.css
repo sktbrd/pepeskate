@@ -1,11 +1,9 @@
 .sideMenu {
   display: flex;
-  flex-direction: column;
   height: 100vh;
   font-size: 2rem;
   padding: 20px;
   position: sticky;
-  top: 0;
 }
 
 .open {
@@ -18,11 +16,8 @@
 }
 
 .menuItems li {
-  display: flex;
-  align-items: center;
   font-size: 1.2rem;
-  margin-top: 2rem; /* Add or adjust the margin-top value to create vertical space */
-  margin-bottom: 2rem; /* Add or adjust the margin-bottom value to create vertical space */
+  margin: 2rem; 
   background-color: rgb(33, 201, 24);
   border-radius: 5px;
   justify-items: flex-start;
@@ -40,12 +35,10 @@
 
 
 .iconMenu {
-  color: #f7a307;
   justify-content: space-between;
 }
 
 .closed .menuItems li {
   margin-top: 0; /* Reset margin-top value */
   margin-bottom: 0; /* Reset margin-bottom value */
-  color: #f7a307;
 }

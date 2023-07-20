@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuthUser from "../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
-import styles from "../styles/PostModal.module.css";
+import styles from "../styles/HiveLoginModal.module.css";
 
 function HiveLoginModal({ showModal, handleClose }) {
   const [username, setUsername] = useState("");
@@ -41,16 +41,31 @@ function HiveLoginModal({ showModal, handleClose }) {
               <span className="close" onClick={handleClose}>
                 &times;
               </span>
-              <h4>Hive Keychain</h4>
+              <h5>Hive Keychain</h5>
               <div className="form-group">
+                <div>
                 <input
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={username}
-                  onChange={handleInputChange}
-                  required
-                />
+  type="text"
+  name="username"
+  placeholder="Username"
+  value={username}
+  onChange={handleInputChange}
+  required
+  style={{
+    padding: "10px",
+    borderRadius: "5px",
+    border: "1px solid limegreen",
+    width: "100%", // subtract padding
+    boxSizing: "border-box",
+    fontSize: "16px",
+    backgroundColor: "#333",
+    color: "limegreen",
+    fontFamily: "'Courier New', monospace",
+  }}
+/>
+
+                </div>
+
               </div>
               <button
                 type="submit"
