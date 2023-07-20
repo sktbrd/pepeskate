@@ -31,12 +31,12 @@ export default function Wallet() {
         </center>
 
         <TabPanel>
-          <div className={styles.token_panel_container}>
-            <div>
-              <TokensBalanceDisplay walletAddress={address} chain={"ETH_MAINNET"} />
+          <div className={styles.wallet_dashboard}>
+          <div>
+              <HiveBalance />
             </div>
             <div>
-              <HiveBalance />
+              <TokensBalanceDisplay walletAddress={address} chain={"ETH_MAINNET"} />
             </div>
           </div>
         </TabPanel>

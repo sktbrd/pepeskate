@@ -61,7 +61,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
             <FaSignOutAlt /> Logout
           </li>
         ) : (
-          <li className={styles.iconMenu} onClick={() => setShowHiveLoginModal(true)}>
+          <li onClick={() => setShowHiveLoginModal(true)}>
             <FaUser /> HiveLogin
           </li>
         )}
@@ -70,7 +70,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       {!showSideMenu && (
         <div className={styles.iconMenu}>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaHome  color="blue" />
+            <FaHome  />
           </div>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaUser />

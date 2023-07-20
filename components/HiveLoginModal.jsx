@@ -41,12 +41,12 @@ function HiveLoginModal({ showModal, handleClose }) {
               <span className="close" onClick={handleClose}>
                 &times;
               </span>
-              <h3>Login with Hive Keychain</h3>
+              <h4>Hive Keychain</h4>
               <div className="form-group">
-                <label>Username:</label>
                 <input
                   type="text"
                   name="username"
+                  placeholder="Username"
                   value={username}
                   onChange={handleInputChange}
                   required

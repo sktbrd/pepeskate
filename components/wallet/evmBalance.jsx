@@ -29,11 +29,10 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
 
   // Hydration error guard
   useEffect(() => {
-    if (walletAddress?.length) setAddress(walletAddress);
+    if (walletAddress) setAddress(walletAddress);
   }, [walletAddress]);
 
-  //   Fetch token balances when page loads
-
+  // Fetch token balances when page loads
   useEffect(() => {
     if (address) getBalance();
   }, [address]);
@@ -41,12 +40,9 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
   // Render TokensBalancePanel component
   return (
     <div className={styles.token_box}>
-      <div className={styles.header}>EVM Balance</div>
-
-        {address?.length ? (
+        {address ? (
           <div className={styles.header}>
-            {address?.slice(0, 10)}
-            {address?.slice(address.length - 4)}
+           EVM Balance of {address}
           </div>
         ) : (
           ""
@@ -64,12 +60,12 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
                         <img src={token.logo} alt={"logo"}></img>
                       </div>
                     ) : (
-                      <div className={styles.image_placeholder_container}></div>
+                      <div className={styles.image_container}>
+                        <img src="https://images.ecency.com/u/hive-173115/avatar/lardge" alt="logo" />
+                      </div>
                     )}
                     <div className={styles.coin_name}>
-                      {token.name?.length > 15
-                        ? token.name?.substring(0, 15)
-                        : token.name}
+                      {token.name}
                     </div>
                   </div>
                   <div className={styles.token_info}>
@@ -79,7 +75,6 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
                 </div>
               );
             })}
-      </div>
+    </div>
   );
-  
 }
