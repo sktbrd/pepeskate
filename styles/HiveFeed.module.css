@@ -5,6 +5,8 @@
   gap: 20px;
   background: linear-gradient(180deg, #201f1f, #35333a);
   border-radius: 10px;
+  margin-top: 2px;
+
 }
 
 @media (max-width: 768px) {
@@ -29,6 +31,8 @@
   transform: translateY(-3px) rotateX(2deg);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   background: linear-gradient(180deg, #35333a, #787676);
+  border: 1px solid rgb(255, 255, 255);
+
 }
 
 .postThumbnail {
@@ -36,6 +40,7 @@
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
+
 }
 
 .postInfo {
@@ -56,7 +61,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
-  box-shadow: 0 0 5px 3px rgb(92, 255, 92); /* Add the green glow effect */
+  box-shadow: 0 0 5px 3px rgb(246, 246, 246); 
 }
 
 .authorAvatar img {

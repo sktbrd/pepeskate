@@ -1,9 +1,11 @@
 .sideMenu {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   font-size: 2rem;
   padding: 20px;
   position: sticky;
+  top: 0;
 }
 
 .open {
@@ -16,8 +18,11 @@
 }
 
 .menuItems li {
+  display: flex;
+  align-items: center;
   font-size: 1.2rem;
-  margin: 2rem; 
+  margin-top: 2rem; /* Add or adjust the margin-top value to create vertical space */
+  margin-bottom: 2rem; /* Add or adjust the margin-bottom value to create vertical space */
   background-color: rgb(33, 201, 24);
   border-radius: 5px;
   justify-items: flex-start;
@@ -30,7 +35,7 @@
 
 .menuItems li:hover {
   cursor: pointer;
-  background-color: rgb(255, 204, 0);
+  background-color: rgb(241, 240, 234);
 }
 
 

@@ -54,7 +54,7 @@ export default function About() {
         <div className={styles.container}>
           <div>
             <div>
-              <h3>Voting Power: add support to HP here </h3>
+              <h3 style={{color:"white"}}>Voting Power: add support to HP here </h3>
               <br/>
             </div>
             <table className={styles.table}>

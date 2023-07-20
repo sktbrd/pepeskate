@@ -39,7 +39,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     >
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
         <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/")}>
-          <Link href={"/"}><FaHome /> Home</Link>
+          <Link href={"/"}><FaHome  /> Home</Link>
         </li>
         {user && (
           <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/profile")}>
@@ -70,7 +70,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       {!showSideMenu && (
         <div className={styles.iconMenu}>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaHome  />
+            <FaHome />
           </div>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaUser />
