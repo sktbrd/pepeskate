@@ -1,0 +1,5 @@
+.token_panel_container {
+    display: flex;
+    flex-wrap: wrap; 
+  
+  }

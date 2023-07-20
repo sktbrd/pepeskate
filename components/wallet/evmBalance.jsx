@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../../styles/EthWallet.module.css";
+import styles from "../../pages/wallet/EvmBalance.module.css";
 
 // Define TokensBalancePanel component
 export default function TokensBalancePanel({ walletAddress, chain }) {
@@ -40,14 +40,12 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
 
   // Render TokensBalancePanel component
   return (
-    <div className={styles.token_panel_container}>
-      
-      <div className={styles.tokens_box}>
+    <div className={styles.token_box}>
       <div className={styles.header}>EVM Balance</div>
 
         {address?.length ? (
           <div className={styles.header}>
-            {address?.slice(0, 6)}
+            {address?.slice(0, 10)}
             {address?.slice(address.length - 4)}
           </div>
         ) : (
@@ -63,7 +61,7 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
                   <div className={styles.logo_and_name_container}>
                     {token.logo ? (
                       <div className={styles.image_container}>
-                        <img src={token.logo} alt={""}></img>
+                        <img src={token.logo} alt={"logo"}></img>
                       </div>
                     ) : (
                       <div className={styles.image_placeholder_container}></div>
@@ -82,7 +80,6 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
               );
             })}
       </div>
-    </div>
   );
   
 }

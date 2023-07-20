@@ -7,34 +7,32 @@
   width: 100%; /* This will make the container take up the full width of its parent */
   overflow: auto;
 }
-
-.token_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* This will make the items wrap to a new line if there's not enough space */
-  min-width: 300px; /* Adjust this to control the minimum width of the container */
-}
-
-
 .header {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 2em;
-  color: white;
+  color: rgb(247, 255, 3);
 }
-
 .balance_container {
   display: flex;
   justify-content: space-between;
-  margin-top: 2em;
+  margin-top: 2em; 
 }
+.token_container {
+  background-color: blueviolet;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* This will make the items wrap to a new line if there's not enough space */
+  min-width: 300px; /* Adjust this to control the minimum width of the container */
+  justify-content: space-between;
 
+}
 
 .logo_and_name_container {
   display: flex;
   align-items: center;
   gap: 1em; /* Adjust this to control the space between the logo and the name */
+  background-color: aqua;
 }
 
 .image_container {
@@ -54,23 +52,12 @@
   display: flex;
   gap: 0.5em;
   font-weight: 700;
-  color: white;
+  color: rgb(87, 6, 250);
+  
 }
 
 .price {
-  color: rgb(243, 151, 14);
+  color:  rgb(14, 243, 68);
 }
 
-.token_symbol {
-  color: #ffffff;
-}
 
-.token_panel_container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.third_component {
-  border: 1px solid black;
-  flex: 1;
-}

@@ -6,11 +6,11 @@ export default function Layout({ children }) {
   const [showSideMenu, setShowSideMenu] = useState(false);
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <Navbar/>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", flex: 1 }}>
         <SideMenu showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
-        <main>{children}</main>
+        <main style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}>{children}</main>
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
-.sidemenu {
+.sideMenu {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  font-size: 5rem;
+  font-size: 2rem;
+  padding: 20px;
+  position: sticky;
+  top: 0;
 }
 
 .open {
@@ -22,10 +23,10 @@
   font-size: 1.2rem;
   margin-top: 2rem; /* Add or adjust the margin-top value to create vertical space */
   margin-bottom: 2rem; /* Add or adjust the margin-bottom value to create vertical space */
-  color: #ccc5c5;
-  background-color: rgb(82, 79, 79);
+  background-color: rgb(33, 201, 24);
   border-radius: 5px;
   justify-items: flex-start;
+  padding: 5px;
 }
 
 .menuItems li svg {
@@ -37,9 +38,6 @@
   background-color: rgb(255, 204, 0);
 }
 
-.menuItems li:hover svg {
-  color: #f71b07;
-}
 
 .iconMenu {
   color: #f7a307;
@@ -49,4 +47,5 @@
 .closed .menuItems li {
   margin-top: 0; /* Reset margin-top value */
   margin-bottom: 0; /* Reset margin-bottom value */
+  color: #f7a307;
 }

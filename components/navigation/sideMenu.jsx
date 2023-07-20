@@ -53,7 +53,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
         )}
         {user && (
           <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
-            <Link href={"/post"}><FaUpload /> Post </Link> 
+            <Link href={"/post"}><FaUpload/> Post </Link> 
           </li>
         )}
         {user ? (
@@ -70,7 +70,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       {!showSideMenu && (
         <div className={styles.iconMenu}>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaHome />
+            <FaHome  color="blue" />
           </div>
           <div className={styles.menuItems} onClick={handleOpenMenu}>
             <FaUser />

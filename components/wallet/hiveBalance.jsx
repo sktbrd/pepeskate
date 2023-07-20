@@ -1,7 +1,16 @@
+// import react stuff 
+
 import { useState, useEffect } from "react";
-import useAuthUser from "../../pages/api/UseAuthUser.js";
-import styles from "../../styles/HiveWallet.module.css";
 import { FaCoins } from 'react-icons/fa';
+
+// import current user
+
+import useAuthUser from "../../pages/api/UseAuthUser.js";
+
+// import styles 
+
+import styles from "../../pages/wallet/HiveBalance.module.css";
+
 
 export default function HiveBalanceDisplay() {
   const { user } = useAuthUser();
@@ -42,14 +51,14 @@ export default function HiveBalanceDisplay() {
       ) : (
         <>
           <div className={styles.avatar_container}>
-            <img
+            <img 
               src={`https://images.hive.blog/u/${user.name}/avatar`}
               alt="profile avatar"
               className={styles.avatar}
             />
             <div className={styles.name}>{user.name}</div>
           </div>
-          <div className={styles.balance_container}>
+          <div className={styles.hivebalance_container}>
             <div className={styles.token_container}>
               <div className={styles.token_info}>
                 {hiveBalance ? (
@@ -97,6 +106,7 @@ export default function HiveBalanceDisplay() {
             </div>
           </div>
           <input type="text" value={toAddress} onChange={(e) => setToAddress(e.target.value)} placeholder="To Address" />
+          <br></br>
           <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
           <button onClick={handleTransfer}>Send Hive</button>
         </>
