@@ -36,8 +36,6 @@ export default function PostModal({ title, content, author, permlink, onClose })
     }
   };
 
-  
-
   const preprocessContent = (content) => {
     const imageRegex = /!\[.*?\]\((.*?)\)/g;
     const replacedContent = content.replace(imageRegex, (match, url) => {
@@ -45,7 +43,6 @@ export default function PostModal({ title, content, author, permlink, onClose })
     });
     return replacedContent;
   };
-  
 
   const processedContent = preprocessContent(content);
 
@@ -152,31 +149,30 @@ export default function PostModal({ title, content, author, permlink, onClose })
   const [userScrolled, setUserScrolled] = useState(false);
 
   // Event handler to track the user's scrolling behavior
-  const handleScroll = () => {
-    // Check if the user has scrolled manually
-    if (modalContainerRef.current.scrollTop !== modalContainerRef.current.scrollHeight) {
-      setUserScrolled(true);
-    } else {
-      setUserScrolled(false);
-    }
-  };
+  // Event handler to track the user's scrolling behavior
+const handleScroll = () => {
+  // Check if the user has scrolled to the bottom of the modal
+  const isAtBottom = modalContainerRef.current.scrollTop >= modalContainerRef.current.scrollHeight - modalContainerRef.current.offsetHeight;
+  setUserScrolled(!isAtBottom);
+};
 
-  useEffect(() => {
-    // Show a new character every 15 milliseconds (adjust as needed)
-    const timer = setInterval(() => {
-      setCharactersToShow((prevChars) => prevChars + 1);
-    }, 10);
+useEffect(() => {
+  // Show a new character every 15 milliseconds (adjust as needed)
+  const timer = setInterval(() => {
+    setCharactersToShow((prevChars) => prevChars + 1);
+  }, 10);
 
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(timer);
-  }, []);
+  // Clear the interval when the component is unmounted
+  return () => clearInterval(timer);
+}, []);
 
-  useEffect(() => {
-    // Scroll the modal container as characters are added, but only if the user has not scrolled manually
-    if (modalContainerRef.current && !userScrolled) {
-      modalContainerRef.current.scrollTop = modalContainerRef.current.scrollHeight;
-    }
-  }, [charactersToShow, userScrolled]);
+useEffect(() => {
+  // Scroll the modal container as characters are added, but only if the user has not scrolled manually
+  if (modalContainerRef.current && !userScrolled) {
+    modalContainerRef.current.scrollTop = modalContainerRef.current.scrollHeight;
+  }
+}, [charactersToShow, userScrolled]);
+
 
   // Ref to access the modal container element
   const modalContainerRef = useRef(null);
