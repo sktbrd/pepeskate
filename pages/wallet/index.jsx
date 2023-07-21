@@ -1,7 +1,9 @@
 // import react stuff 
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { useState } from "react";
 import "react-tabs/style/react-tabs.css";
+import React from 'react';
+import { useState, useEffect } from 'react';
+
 
 // import web3 stuff
 import { useAccount } from "wagmi";
@@ -19,18 +21,15 @@ export default function Wallet() {
 
   return (
     <div>
-      <center>
-      <h2>WALLET</h2>
-      </center>
       <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
         <center>
         <TabList>
-          <Tab>Tokens</Tab>
-          <Tab>NFTs</Tab>
+          <Tab style={{background:"limegreen"}}>Tokens</Tab>
+          <Tab style={{background:"limegreen"}}>NFTs</Tab>
         </TabList>
         </center>
 
-        <TabPanel>
+        <TabPanel >
           <div className={styles.wallet_dashboard}>
           <div>
               <HiveBalance />

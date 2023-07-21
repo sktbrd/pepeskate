@@ -9,6 +9,7 @@
 
 }
 
+
 .header {
   font-weight: 700;
   font-size: 18px;
@@ -20,9 +21,20 @@
   justify-content: space-between;
   margin-top: 2em;
 }
+
 .token_container {
   display: flex;
   align-items: center;
+  border-radius: 15px;
+}
+.token_container {
+  /* ...existing styles... */
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the container */
+  transition: background-color 0.3s ease; /* Add a transition for the background-color property */
+}
+
+.token_container:hover {
+  background-color: #433737; /* Change the background color when hovering over the container */
 }
 
 .image_container {
@@ -39,7 +51,7 @@
   font-weight: 700;
 }
 
-.price {
+.balance {
   color: limegreen;
 }
 

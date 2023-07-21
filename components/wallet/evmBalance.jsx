@@ -42,8 +42,9 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
     <div className={styles.token_box}>
         {address ? (
           <div className={styles.header}>
-           EVM Balance of {address}
-          </div>
+          EVM Balance of <span style={{color: 'orange'}}>{address}</span>
+        </div>
+        
         ) : (
           ""
         )}
@@ -69,7 +70,7 @@ export default function TokensBalancePanel({ walletAddress, chain }) {
                     </div>
                   </div>
                   <div className={styles.token_info}>
-                    <div className={styles.price}>{token.balance}</div>
+                    <div className={styles.balance}>{token.balance}</div>
                     <div className={styles.coin_symbol}>{token.symbol}</div>
                   </div>
                 </div>

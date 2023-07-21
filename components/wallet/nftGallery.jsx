@@ -80,7 +80,7 @@ export default function NFTGallery({}) {
     <div className={styles.nft_gallery_page}>
       <div>
         <div className={styles.fetch_selector_container}>
-          <h2 style={{ fontSize: "20px", color: "white"}}>Explore NFTs by</h2>
+          <h2 style={{ padding: "20px", fontSize: "20px", color: "limegreen"}}>Explore NFTs</h2>
           <div className={styles.select_container}>
             <select
               defaultValue={"wallet"}
@@ -126,7 +126,7 @@ export default function NFTGallery({}) {
                 justifyContent: "end",
               }}
             >
-              <p>Hide Shit</p>
+              <p style={{color:"limegreen"}}>Hide Shit</p>
               <label className={styles.switch}>
                 <input
                   onChange={(e) => setSpamFilter(e.target.checked)}
@@ -215,7 +215,7 @@ function NftCard({ nft }) {
         </div>
 
         <div className={styles.description_container}>
-          <p>{nft.description}</p>
+          <p style={{color:"limegreen"}}>{nft.description}</p>
         </div>
       </div>
     </div>

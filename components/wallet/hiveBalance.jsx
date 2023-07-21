@@ -1,29 +1,30 @@
 // import react stuff 
-
 import { useState, useEffect } from "react";
 import { FaCoins } from 'react-icons/fa';
+import Image from 'next/image';
+import Modal from './sendHiveModal.jsx'; // Import the Modal component
 
 // import current user
-
 import useAuthUser from "../../pages/api/UseAuthUser.js";
 
 // import styles 
-
 import styles from "../../pages/wallet/HiveBalance.module.css";
-
 
 export default function HiveBalanceDisplay() {
   const { user } = useAuthUser();
   const [hiveBalance, setHiveBalance] = useState(0);
+  const [hivePower, setHivePower] = useState(0); // New state variable for Hive Power
   const [hbdBalance, setHbdBalance] = useState(0);
   const [savingsBalance, setSavingsBalance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [toAddress, setToAddress] = useState("");
   const [amount, setAmount] = useState("");
+  const [showModal, setShowModal] = useState(false); // New state variable for the visibility of the modal
 
   useEffect(() => {
     if (user) {
       setHiveBalance(user.balance);
+      setHivePower(user.hive_power); // Set the Hive Power balance
       setHbdBalance(user.hbd_balance);
       setSavingsBalance(user.savings_hbd_balance)
       setIsLoading(false);
@@ -43,6 +44,10 @@ export default function HiveBalanceDisplay() {
     }
   }
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  }
+
   return (
     <div className={styles.tokens_box}>
       <div className={styles.header}>Hive Balance</div>
@@ -59,11 +64,12 @@ export default function HiveBalanceDisplay() {
             <div className={styles.name}>{user.name}</div>
           </div>
           <div className={styles.hivebalance_container}>
-            <div className={styles.token_container}>
+            <div className={styles.token_container} onClick={handleOpenModal}>
+              <Image src="/hive_logo.png" alt="Hive Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {hiveBalance ? (
                   <div className={styles.token_balance}>
-                    <div className={styles.price}>
+                    <div className={styles.balance}>
                       {hiveBalance.split(" ")[0]}
                     </div>
                     <div className={styles.token_symbol}>HIVE</div>
@@ -73,14 +79,27 @@ export default function HiveBalanceDisplay() {
                 )}
               </div>
             </div>
-            <div className={styles.token_container}>
-              <div className={styles.image_container}>
-                <FaCoins />
+            <div className={styles.token_container} onClick={handleOpenModal}>
+              <Image src="/hive_logo.png" alt="Hive Power Logo" width={30} height={30} className={styles.logo} />
+              <div className={styles.token_info}>
+                {hivePower ? (
+                  <div className={styles.token_balance}>
+                    <div className={styles.balance}>
+                      {hivePower.split(" ")[0]}
+                    </div>
+                    <div className={styles.token_symbol}>HP</div>
+                  </div>
+                ) : (
+                  <div className={styles.token_symbol}>HP</div>
+                )}
               </div>
+            </div>
+            <div className={styles.token_container} onClick={handleOpenModal}>
+              <Image src="/hive_logo.png" alt="HBD Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {hbdBalance ? (
                   <div className={styles.token_balance}>
-                    <div className={styles.price}>
+                    <div className={styles.balance}>
                       {hbdBalance.split(" ")[0]}
                     </div>
                     <div className={styles.token_symbol}>HBD</div>
@@ -90,25 +109,32 @@ export default function HiveBalanceDisplay() {
                 )}
               </div>
             </div>
-            <div className={styles.token_container}>
+            <div className={styles.token_container} onClick={handleOpenModal}>
+              <Image src="/hive_logo.png" alt="Savings Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {savingsBalance ? (
                   <div className={styles.token_balance}>
-                    <div className={styles.price}>
+                    <div className={styles.balance}>
                       {savingsBalance.split(" ")[0]}
                     </div>
                     <div className={styles.token_symbol}>HBD Savings</div>
                   </div>
                 ) : (
-                  <div>No HBD balance found.</div>
+                  <div>No HBD Savings balance found.</div>
                 )}
               </div>
             </div>
           </div>
-          <input type="text" value={toAddress} onChange={(e) => setToAddress(e.target.value)} placeholder="To Address" />
-          <br></br>
-          <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Amount" />
-          <button onClick={handleTransfer}>Send Hive</button>
+          {showModal && (
+            <Modal 
+              toAddress={toAddress} 
+              setToAddress={setToAddress} 
+              amount={amount} 
+              setAmount={setAmount} 
+              handleTransfer={handleTransfer} 
+              setShowModal={setShowModal}
+            />
+          )}
         </>
       )}
     </div>

@@ -12,7 +12,7 @@
   border: 1px solid limegreen;
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 2em;
+  margin-bottom: 0em;
   color: limegreen;
   padding: 10px;
   font-family: 'Courier New', monospace;
@@ -61,8 +61,15 @@
   
 }
 
-.price {
-  color:  rgb(14, 243, 68);
+.balance {
+  color:  rgb(243, 167, 14);
 }
 
+.coin_name {
+  color: white;
+}
+
+.coin_symbol {
+  color: limegreen;
+}
 

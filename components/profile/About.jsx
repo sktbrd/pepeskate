@@ -1,6 +1,7 @@
 // Import react hooks and icons
 import { useState, useEffect } from "react";
 import { FaCoins } from 'react-icons/fa';
+import Image from 'next/image';
 
 // Import current user
 import useAuthUser from "../../pages/api/UseAuthUser.js";
@@ -39,8 +40,8 @@ export default function About() {
   // Define a helper component for displaying profile items
   const ProfileItem = ({ label, value }) => (
     <tr>
-      <td>{label}:</td>
-      <td>{value}</td>
+      <td style={{color: 'white'}}>{label}:</td>
+      <td style={{color: 'white'}}>{value}</td>
     </tr>
   );
 
@@ -67,6 +68,7 @@ export default function About() {
           </div>
           <div className={styles.hivebalance_container}>
             <div className={styles.token_container}>
+              <Image src="/hive_logo.png" alt="Hive Logo" width={50} height={50} className={styles.logo} />
               <div className={styles.token_info}>
                 <div className={styles.token_balance}>
                   <div className={styles.price}>
@@ -77,9 +79,7 @@ export default function About() {
               </div>
             </div>
             <div className={styles.token_container}>
-              <div className={styles.image_container}>
-                <FaCoins />
-              </div>
+              <Image src="/hive_logo.png" alt="HBD Logo" width={50} height={50} className={styles.logo} />
               <div className={styles.token_info}>
                 <div className={styles.token_balance}>
                   <div className={styles.price}>
@@ -90,6 +90,7 @@ export default function About() {
               </div>
             </div>
             <div className={styles.token_container}>
+              <Image src="/hive_logo.png" alt="Savings Logo" width={50} height={50} className={styles.logo} />
               <div className={styles.token_info}>
                 <div className={styles.token_balance}>
                   <div className={styles.price}>
@@ -104,6 +105,5 @@ export default function About() {
       )}
     </div>
     </div>
-
   );  
 }
