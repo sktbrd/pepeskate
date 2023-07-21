@@ -37,12 +37,28 @@ export default function PostModal({ title, content, author, permlink, onClose })
   };
 
   const preprocessContent = (content) => {
-    const imageRegex = /!\[.*?\]\((.*?)\)/g;
-    const replacedContent = content.replace(imageRegex, (match, url) => {
-      return `![image](${url})`;
-    });
+    // Update the regex pattern to handle links with parentheses in the URL
+    const imageRegexEcency = /\(https:\/\/images\.ecency\.com\/[^)]+\)/g;
+    const imageRegexHiveBlog = /\(https:\/\/images\.hive\.blog\/[^)]+\)/g;
+    const imageRegexEcencyP = /\(https:\/\/images\.ecency\.com\/p\/[^)]+\)/g;
+  
+    const replacedContent = content
+      .replace(imageRegexEcency, (match) => {
+        const url = match.slice(1, -1); // Remove the surrounding parentheses
+        return `![image](${url})`;
+      })
+      .replace(imageRegexHiveBlog, (match) => {
+        const url = match.slice(1, -1); // Remove the surrounding parentheses
+        return `![image](${url})`;
+      })
+      .replace(imageRegexEcencyP, (match) => {
+        const url = match.slice(1, -1); // Remove the surrounding parentheses
+        return `![image](${url})`;
+      });
+  
     return replacedContent;
   };
+
 
   const processedContent = preprocessContent(content);
 
@@ -75,45 +91,41 @@ export default function PostModal({ title, content, author, permlink, onClose })
       </blockquote>
     ),
     table: ({ children }) => (
-      <table style={{ color:'limegreen', borderCollapse: 'collapse', width: '100%' }}>{children}</table>
+      <table style={{ color: 'limegreen', borderCollapse: 'collapse', width: '100%' }}>{children}</table>
     ),
     tableCell: ({ isHeader, children }) => {
       const Tag = isHeader ? 'th' : 'td';
-      return <Tag style={{ color:'limegreen', padding: '10px', border: isHeader ? 'none' : '1px solid #ddd' }}>{children}</Tag>;
+      return <Tag style={{ color: 'limegreen', padding: '10px', border: isHeader ? 'none' : '1px solid #ddd' }}>{children}</Tag>;
     },
     image: ({ src, alt }) => {
       // Check if the image URL matches the avatar image URL pattern
       if (src.startsWith('https://images.ecency.com/webp/u/')) {
-        return <img src={src} alt={alt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '100%' }} />;
+        return <img src={src} alt={alt} style={{  marginLeft:'40%', maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '100%' }} />;
       } else {
         // Render a placeholder image for other images
         return <img src={placeholderImageUrl} alt={alt} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />;
       }
     },
     link: ({ href, children }) => {
-      // Check if the link is an image link (ends with image file extension)
-      const isImageLink = /\.(png|jpe?g|gif|svg)$/i.test(href);
-  
-      if (isImageLink) {
-        return <img src={href} alt="Link Preview" style={{ color: 'yellow' ,maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />;
+      // Check if the link is from "images.ecency.com" or "images.hive.blog"
+      if (href.startsWith('https://images.ecency.com/p/') || href.startsWith('https://images.hive.blog/')) {
+        // Render the link as an image
+        return <img src={href} alt="Link Preview" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />;
+      } else {
+        // If it's not from "images.ecency.com" or "images.hive.blog", render a regular anchor tag
+        return (
+          <a style={{ color: 'yellow' }} href={href} target="_blank" rel="noopener noreferrer">
+            {children}
+          </a>
+        );
       }
-  
-      // If it's not an image link, render a regular anchor tag
-      return (
-        <a style={{ color: 'yellow' }} href={href} target="_blank" rel="noopener noreferrer">
-          {children}
-        </a>
-      );
     },
-  
     // Custom renderer for bold text
     strong: ({ children }) => <strong style={{ fontWeight: 'bold', color: 'rgb(255, 235, 18)' }}>{children}</strong>,
-  
     // Custom paragraph renderer
     paragraph: ({ children }) => (
       <p style={{ textAlign: 'center', fontWeight: 'bold', color: 'limegreen' }}>{children}</p>
     ),
-      
     // Custom renderer for the b (bold) tag
     b: ({ children }) => {
       // Convert the children array to a string
@@ -149,30 +161,28 @@ export default function PostModal({ title, content, author, permlink, onClose })
   const [userScrolled, setUserScrolled] = useState(false);
 
   // Event handler to track the user's scrolling behavior
-  // Event handler to track the user's scrolling behavior
-const handleScroll = () => {
-  // Check if the user has scrolled to the bottom of the modal
-  const isAtBottom = modalContainerRef.current.scrollTop >= modalContainerRef.current.scrollHeight - modalContainerRef.current.offsetHeight;
-  setUserScrolled(!isAtBottom);
-};
+  const handleScroll = () => {
+    // Check if the user has scrolled to the bottom of the modal
+    const isAtBottom = modalContainerRef.current.scrollTop >= modalContainerRef.current.scrollHeight - modalContainerRef.current.offsetHeight;
+    setUserScrolled(!isAtBottom);
+  };
 
-useEffect(() => {
-  // Show a new character every 15 milliseconds (adjust as needed)
-  const timer = setInterval(() => {
-    setCharactersToShow((prevChars) => prevChars + 1);
-  }, 10);
+  useEffect(() => {
+    // Show a new character every 15 milliseconds (adjust as needed)
+    const timer = setInterval(() => {
+      setCharactersToShow((prevChars) => prevChars + 1);
+    }, 10);
 
-  // Clear the interval when the component is unmounted
-  return () => clearInterval(timer);
-}, []);
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(timer);
+  }, []);
 
-useEffect(() => {
-  // Scroll the modal container as characters are added, but only if the user has not scrolled manually
-  if (modalContainerRef.current && !userScrolled) {
-    modalContainerRef.current.scrollTop = modalContainerRef.current.scrollHeight;
-  }
-}, [charactersToShow, userScrolled]);
-
+  useEffect(() => {
+    // Scroll the modal container as characters are added, but only if the user has not scrolled manually
+    if (modalContainerRef.current && !userScrolled) {
+      modalContainerRef.current.scrollTop = modalContainerRef.current.scrollHeight;
+    }
+  }, [charactersToShow, userScrolled]);
 
   // Ref to access the modal container element
   const modalContainerRef = useRef(null);
