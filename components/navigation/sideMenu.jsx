@@ -37,9 +37,13 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       className={styles.sideMenu}
 
     >
+      
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
+      <a> {/* Use the url state variable here */}
+            <img src="https://i.gifer.com/origin/f1/f1a737e4cfba336f974af05abab62c8f_w200.gif" alt="" />
+          </a>
         <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/")}>
-          <Link href={"/"}><FaHome  /> Home</Link>
+          <Link href={"/"}><FaHome /> Home</Link>
         </li>
         {user && (
           <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/profile")}>
@@ -69,24 +73,13 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       </ul>
       {!showSideMenu && (
         <div className={styles.iconMenu}>
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
+          <div className={styles.menu} onClick={handleOpenMenu}>
             <FaHome />
+            <span>Menu</span>
           </div>
-          <div className={styles.menuItems} onClick={handleOpenMenu}>
-            <FaUser />
-          </div>
-          {user && (
-            <div className={styles.menuItems} onClick={handleOpenMenu}>
-              <FaWallet />
-            </div>
-          )}
-          {user && (
-            <div className={styles.menuItems} onClick={handleOpenMenu}>
-              <FaUpload />
-            </div>
-          )}
         </div>
       )}
+
     </div>
   );
 }

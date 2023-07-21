@@ -17,16 +17,22 @@
   display: none;
 }
 
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .menuItems li {
   display: flex;
   align-items: center;
   font-size: 1.2rem;
-  margin-top: 2rem; /* Add or adjust the margin-top value to create vertical space */
-  margin-bottom: 2rem; /* Add or adjust the margin-bottom value to create vertical space */
+  margin-bottom: 2rem;
+  color: #ccc5c5;
   background-color: rgb(33, 201, 24);
   border-radius: 5px;
-  justify-items: flex-start;
-  padding: 5px;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .menuItems li svg {
@@ -35,15 +41,47 @@
 
 .menuItems li:hover {
   cursor: pointer;
-  background-color: rgb(241, 240, 234);
+  background-color: rgb(255, 204, 0);
 }
 
+.menuItems li:hover svg {
+  color: #f71b07;
+}
 
 .iconMenu {
-  justify-content: space-between;
+  color: #f7a307;
+
 }
 
 .closed .menuItems li {
-  margin-top: 0; /* Reset margin-top value */
-  margin-bottom: 0; /* Reset margin-bottom value */
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #f7a307;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc5c5;
+  background-color: rgb(33, 201, 24);
+  border-radius: 5px;
+  justify-content: center;
+  padding: 5px;
+  width: 100%;
+}
+
+
+.menu svg {
+  margin-right: 7px;
+}
+
+.menu:hover {
+  cursor: pointer;
+  background-color: rgb(255, 204, 0);
+}
+
+.menu:hover svg {
+  color: #f71b07;
 }

@@ -1,6 +1,6 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import styles from "../../styles/Navbar.module.css";
-// import SearchBar from "./SearchBar";
+//import SearchBar from "./SearchBar";
 import HiveFeed from "../HiveFeed";
 
 export default function Navbar() {

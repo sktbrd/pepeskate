@@ -31,7 +31,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.2s ease;
-	width: 100%; /* Make the buttons take up the full width of the modal */
+	width: 100%;
 }
 
 .login_btn:hover {

@@ -6,7 +6,19 @@
   background: linear-gradient(180deg, #201f1f, #35333a);
   border-radius: 10px;
   margin-top: 2px;
+}
 
+/* Adjust the number of columns based on screen width */
+@media (max-width: 1200px) {
+  .posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -25,6 +37,8 @@
   backdrop-filter: blur(10px) saturate(120%) contrast(0.9);
   cursor: pointer;
   position: relative;
+  min-width: 0; /* Ensure that the column can shrink */
+
 }
 
 .post:hover {

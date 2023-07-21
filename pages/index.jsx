@@ -6,9 +6,6 @@ export default function Home() {
     <div>
       <main className={styles.main}>       
         <HiveBlog />
-        <center>
-        <h2>Powered by Skatehive</h2>
-        </center>
       </main>
     </div>
   );

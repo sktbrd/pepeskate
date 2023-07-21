@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Client } from "@hiveio/dhive";
 import styles from "../styles/HiveFeed.module.css";
 import PostModal from "./PostModal";
+import LoadingBar from './navigation/LoadingBar.jsx';
+
 
 const client = new Client([
   "https://api.hive.blog",
@@ -45,6 +47,7 @@ export default function HiveBlog(query) {
 
   const handlePostClick = (post) => {
     setSelectedPost(post);
+    console.log(post.body)
   };
 
   const handleModalClose = () => {
@@ -65,9 +68,9 @@ export default function HiveBlog(query) {
         </div>
       )}
       {isLoading ? (
-        <center>
-          <h2>Roll a joint...</h2>
-        </center>
+        <center style={{position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+          <LoadingBar />
+        </center> 
       ) : (
         <div className={styles.posts}>
           {posts.map((post) => (

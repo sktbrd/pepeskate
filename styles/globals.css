@@ -4,34 +4,92 @@ body {
 	font-family: 'Courier New', monospace;
 
 }
-h1{
-	margin-bottom: 1rem;
-}
-h2{
-	margin-bottom: .5rem;
-}
-
-p{
-	line-height: 1.5rem;
-	color: rgb(0, 0, 0);
-}
-
-a {
-	color: rgb(15, 14, 14);
-	text-decoration: none;
-}
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	color: rgb(41, 42, 41);
+	color: rgb(0, 0, 0);
 }
 
+a {
+	color: rgb(39, 75, 39);
+	text-decoration: none;
+}
+p{
+	line-height: 1.5rem;
+	color: limegreen;
+}
+h1{
+	color: limegreen;
+	padding: 15px;
+
+}
+h2{
+	margin-bottom: .5rem;
+	color: limegreen;
+	padding: 10px;
+}
+h3 {
+	color: limegreen;
+	padding: 10px;
+}
+li {
+	color: limegreen;
+	padding-bottom: 2px;
+	padding: 10px;
+}
+ul {
+	margin-left: 30px;
+}
+
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+strong {
+	color: rgb(255, 235, 18);
+}
+b {
+	color: rgb(255, 235, 18);
+}
+
+table {
+	color: limegreen
+}
 @media (prefers-color-scheme: dark) {
 	html {
 	}
 }
 
 
+iframe {
+margin: 5%;
+border-radius: 10px;
+border: limegreen solid 1px;
+
+}
+
+/* This will affect the scrollbar globally */
+::-webkit-scrollbar {
+	width: 2px; /* width of the entire scrollbar */
+  }
   
+  ::-webkit-scrollbar-track {
+	background: #bee9b6; /* color of the tracking area */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background: #34ab4c; /* color of the scroll thumb */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+	background: #388924; /* color of the scroll thumb on hover */
+  }
+  * {
+	scrollbar-width: thin; /* "auto" or "thin"  */
+	scrollbar-color: #17d874 #1fcd25; /* scroll thumb and track */
+  }
+
+
