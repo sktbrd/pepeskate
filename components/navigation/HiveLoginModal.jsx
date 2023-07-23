@@ -41,7 +41,7 @@ function HiveLoginModal({ showModal, handleClose }) {
               <span className="close" onClick={handleClose}>
                 &times;
               </span>
-              <h5>Hive Keychain</h5>
+              <h5>Hive Keychain (Desktop Only)</h5>
               <div className="form-group">
                 <div>
                 <input

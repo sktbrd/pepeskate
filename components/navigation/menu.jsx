@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaUpload, FaWallet, FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
-import styles from "./sideMenu.module.css";
+import { FaDiscord, FaUpload, FaWallet, FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import {MdOutlineSkateboarding} from 'react-icons/md';
+import styles from "./Menu.module.css";
 import Link from "next/link";
-import HiveLoginModal from "./HiveLoginModal";
+import HiveLoginModal from "./HiveLoginModal.jsx";
 import useAuthUser from "../../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
 
-function SideMenu({ showSideMenu, setShowSideMenu }) {
+function Menu({ showSideMenu, setShowSideMenu }) {
   const router = useRouter();
   const { user, logout } = useAuthUser();
   const [showHiveLoginModal, setShowHiveLoginModal] = useState(false);
@@ -71,7 +72,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
       {!showSideMenu && (
         <div className={styles.iconMenu}>
           <div className={styles.menu} onClick={handleOpenMenu}>
-            <FaHome />
+            <MdOutlineSkateboarding />
             <span>Menu</span>
           </div>
         </div>
@@ -81,4 +82,4 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
   );
 }
 
-export default SideMenu;
+export default Menu;

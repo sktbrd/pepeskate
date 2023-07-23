@@ -1,7 +1,7 @@
 .wallet_dashboard {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 100px;
+    grid-gap: 50px;
     padding: 20px;
   }
   
@@ -11,7 +11,7 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 994px) {
     .wallet_dashboard {
       grid-template-columns: 1fr;
     }

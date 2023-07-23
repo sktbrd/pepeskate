@@ -1,4 +1,6 @@
 .side-menu {
+    flex-direction: row; /* Align menu items horizontally */
+
   /* Styles for desktop view */
   position: sticky;
   left: 0;
@@ -28,11 +30,18 @@
 .menuItems li {
   font-size: 1.2rem;
   margin-right: 1rem; /* Add some horizontal spacing between menu items */
-  color: #ccc5c5;
+  color: #ee0c0c;
   border-radius: 5px;
   display: flex;
   align-items: center;
+  max-width: 100%; /* Por padrão, a largura é 100% */
+
+  /* Aplicar max-width: 10% apenas em telas maiores que 768px (modo desktop) */
+  @media (min-width: 1222px) {
+    max-width: 10%;
+  }
 }
+
 
 .menuItems li svg {
   padding: 7px;
@@ -45,15 +54,11 @@
 
 .menuItems li:hover {
   cursor: pointer;
-  background-color: rgb(255, 255, 255);
+  border: limegreen solid 1px;
 }
 
 .menuItems li:hover svg {
-  color: #f71b07;
-}
-
-.iconMenu li {
-  color: #f7a307;
+  color: limegreen;
 }
 
 .closed .menuItems li {
@@ -69,18 +74,22 @@
   border-radius: 5px;
   justify-content: center;
   padding: 5px;
-  width: 100%;
+  max-width: 400px; /* Set your desired maximum width */
+  margin: 0 auto; /* Center the menu horizontally using margin */
 }
 
 .menu svg {
   margin-right: 7px;
 }
 
+
+
 .menu:hover {
   cursor: pointer;
-  background-color: rgb(255, 204, 0);
+  background-color: limegreen;
+  color:#000000;
 }
 
 .menu:hover svg {
-  color: #f71b07;
+  color: #000000;
 }

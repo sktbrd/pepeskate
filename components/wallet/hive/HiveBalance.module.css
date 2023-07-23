@@ -2,7 +2,6 @@
   border-radius: 12px;
   border: 1px solid limegreen;
   padding: 2em;
-  width: 100%; /* This will make the container take up the full width of its parent */
   overflow: auto;
   font-family: 'Courier New', monospace;
 }

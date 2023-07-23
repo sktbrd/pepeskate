@@ -3,7 +3,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  background: linear-gradient(180deg, #201f1f, #35333a);
   border-radius: 10px;
   margin-top: 2px;
 }
@@ -30,9 +29,10 @@
 .post {
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 7px limegreen;
   transition: transform 0.2s ease-out;
-  background: linear-gradient(180deg, #787676, #35333a);
+  background: black;
+  border: limegreen solid 1px;
   opacity: 0.7;
   backdrop-filter: blur(10px) saturate(120%) contrast(0.9);
   cursor: pointer;
@@ -54,6 +54,7 @@
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
+  border: limegreen solid 1px;
 
 }
 
