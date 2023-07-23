@@ -1,10 +1,10 @@
 import { useState } from "react";
-import style from "../../styles/ChannelMenu.module.css";
-import AuthorBlog from "./AuthorBlog";
-import NFTGallery from "../wallet/nftGallery.jsx"
-import About from "./About.jsx"
+import style from "./profileTabs.module.css";
+import AuthorBlog from "./blog/AuthorBlog";
+import NFTGallery from "../wallet/nft/nftGallery.jsx"
+import About from "./about/About.jsx"
 
-const ChannelNav = () => {
+const ProfileTabs = () => {
   const [activeTab, setActiveTab] = useState("about");
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -115,4 +115,4 @@ const ChannelDrops = () => {
   return <div>Drops Component</div>;
 };
 
-export default ChannelNav;
+export default ProfileTabs;

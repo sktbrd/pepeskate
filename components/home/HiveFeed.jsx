@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Client } from "@hiveio/dhive";
-import styles from "../styles/HiveFeed.module.css";
-import PostModal from "./PostModal";
-import LoadingBar from './navigation/LoadingBar.jsx';
+import styles from "./HiveFeed.module.css";
+import PostModal from "../post/PostModal";
+import LoadingBar from '../fx/LoadingBar.jsx';
 
 
 const client = new Client([

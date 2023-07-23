@@ -1,4 +1,4 @@
-import styles from '../../pages/wallet/sendHiveModal.module.css'; // Import the styles for the Modal
+import styles from './sendHiveModal.module.css'; // Import the styles for the Modal
 import React from 'react';
 import { useState, useEffect } from 'react';
 

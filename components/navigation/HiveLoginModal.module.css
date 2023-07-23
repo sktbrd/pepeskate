@@ -6,6 +6,7 @@
 	background-color: #f0f0f0;
 	color: #333;
 	width: 80%; /* Set the width of the modal */
+	z-index: 1;
 }
 
 .span {

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useAuthUser from "../api/UseAuthUser.js";
-import styles from "../../styles/Profile.module.css";
-import AuthorBlog from "../../components/profile/AuthorBlog.jsx";
-import ChannelNav from "../../components/profile/channelMenu.jsx";
+import styles from "./Profile.module.css";
+import AuthorBlog from "../../components/profile/blog/AuthorBlog.jsx";
+import ProfileTabs from "../../components/profile/profileTabs.jsx";
 
 export default function HiveProfile() {
   const { user } = useAuthUser();
@@ -68,7 +68,7 @@ export default function HiveProfile() {
         </div>
       )}
       <div>
-        <ChannelNav></ChannelNav>
+        <ProfileTabs></ProfileTabs>
       </div>
     </div>
   );

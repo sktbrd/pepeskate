@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../../pages/wallet/EvmBalance.module.css";
+import styles from "./EvmBalance.module.css";
 
 // Define TokensBalancePanel component
 export default function TokensBalancePanel({ walletAddress, chain }) {

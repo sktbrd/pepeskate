@@ -5,59 +5,7 @@ body {
 
 }
 
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	color: rgb(0, 0, 0);
-}
 
-a {
-	color: rgb(39, 75, 39);
-	text-decoration: none;
-}
-p{
-	line-height: 1.5rem;
-	color: limegreen;
-}
-h1{
-	color: limegreen;
-	padding: 15px;
-
-}
-h2{
-	margin-bottom: .5rem;
-	color: limegreen;
-	padding: 10px;
-}
-h3 {
-	color: limegreen;
-	padding: 10px;
-}
-li {
-	color: limegreen;
-	padding-bottom: 2px;
-	padding: 10px;
-}
-ul {
-	margin-left: 30px;
-}
-
-hr {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-strong {
-	color: rgb(255, 235, 18);
-}
-b {
-	color: rgb(255, 235, 18);
-}
-
-table {
-	color: limegreen
-}
 @media (prefers-color-scheme: dark) {
 	html {
 	}

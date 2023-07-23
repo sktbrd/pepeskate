@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FaMap, FaUpload, FaWallet, FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
-import styles from "../../styles/sideMenu.module.css";
+import { FaUpload, FaWallet, FaHome, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import styles from "./sideMenu.module.css";
 import Link from "next/link";
-import HiveLoginModal from "../HiveLoginModal";
+import HiveLoginModal from "./HiveLoginModal";
 import useAuthUser from "../../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
 
@@ -39,9 +39,6 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
     >
       
       <ul className={styles.menuItems} style={{ display: showSideMenu ? "block" : "none" }}>
-      <a> {/* Use the url state variable here */}
-            <img src="https://i.gifer.com/origin/f1/f1a737e4cfba336f974af05abab62c8f_w200.gif" alt="" />
-          </a>
         <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/")}>
           <Link href={"/"}><FaHome /> Home</Link>
         </li>
@@ -61,7 +58,7 @@ function SideMenu({ showSideMenu, setShowSideMenu }) {
           </li>
         )}
         {user ? (
-          <li onClick={logout}>
+          <li className={styles.iconMenu} onClick={logout}>
             <FaSignOutAlt /> Logout
           </li>
         ) : (

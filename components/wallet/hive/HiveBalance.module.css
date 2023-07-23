@@ -1,36 +1,41 @@
-.tokens_box {
+.hive_box {
   border-radius: 12px;
   border: 1px solid limegreen;
   padding: 2em;
-  max-width: 900px; /* Use max-width instead of width to make the container responsive */
   width: 100%; /* This will make the container take up the full width of its parent */
   overflow: auto;
   font-family: 'Courier New', monospace;
-
 }
-
 
 .header {
+  border-radius: 12px;
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 2em;
   color: limegreen;
-}
-.hivebalance_container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2em;
+  padding: 10px;
 }
 
-.token_container {
+.hive_avatar {
+  border-radius: 20px;
+  border: 5px solid limegreen;
+}
+
+.hive_name {
+  color: limegreen ;
+}
+
+.hive_balance_container {
   display: flex;
+  justify-content: stretch;
+  flex-direction: row; 
+  margin-top: 2em;
+  overflow-x: hidden; /* Add this line to enable horizontal scrolling when there's not enough space */
+}
+
+.hive_token_container {
   align-items: center;
   border-radius: 15px;
-}
-.token_container {
-  /* ...existing styles... */
-  cursor: pointer; /* Change the cursor to a pointer when hovering over the container */
-  transition: background-color 0.3s ease; /* Add a transition for the background-color property */
+  margin-right: 1em; /* Add some margin to the right of each token container */
 }
 
 .token_container:hover {
@@ -42,11 +47,9 @@
   width: 30px;
   border-radius: 100%;
   margin-right: 1em;
-  
 }
 
 .token_info {
-  display: flex;
   gap: 0.5em;
   font-weight: 700;
 }
@@ -58,14 +61,3 @@
 .token_symbol {
   color: #ffffff;
 }
-
-
-.avatar {
-  border-radius: 20px;
-  border: 5px solid limegreen;
-}
-
-.name {
-  color: limegreen ;
-}
-

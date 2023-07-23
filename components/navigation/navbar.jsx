@@ -1,7 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import styles from "../../styles/Navbar.module.css";
+import styles from "./Navbar.module.css";
 //import SearchBar from "./SearchBar";
-import HiveFeed from "../HiveFeed";
+import HiveFeed from "../home/HiveFeed";
 
 export default function Navbar() {
   const handleSearch = (tag) => {

@@ -4,10 +4,10 @@ import { FaCoins } from 'react-icons/fa';
 import Image from 'next/image';
 
 // Import current user
-import useAuthUser from "../../pages/api/UseAuthUser.js";
+import useAuthUser from "../../../pages/api/UseAuthUser.js";
 
 // Import styles 
-import styles from "../../styles/About.module.css";
+import styles from "./About.module.css";
 
 export default function About() {
   // Define state variables

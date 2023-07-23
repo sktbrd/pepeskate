@@ -1,10 +1,11 @@
 .tokens_box {
+  border-radius: 12px;
+  border: 1px solid limegreen;
   padding: 2em;
   max-width: 900px; /* Use max-width instead of width to make the container responsive */
   width: 100%; /* This will make the container take up the full width of its parent */
   overflow: auto;
   font-family: 'Courier New', monospace;
-
 }
 
 .header {  
@@ -12,12 +13,8 @@
   border: 1px solid limegreen;
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 0em;
   color: limegreen;
   padding: 10px;
-  font-family: 'Courier New', monospace;
-
-
 }
 .balance_container {
   display: flex;
@@ -30,7 +27,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap; /* This will make the items wrap to a new line if there's not enough space */
-  min-width: 300px; /* Adjust this to control the minimum width of the container */
+  min-width: 200px; /* Adjust this to control the minimum width of the container */
   justify-content: space-between;
 
 }

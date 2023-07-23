@@ -1,6 +1,6 @@
 // AuthorContainer.jsx
 import React from 'react';
-import styles from '../styles/PostModal.module.css';
+import styles from './PostModal.module.css';
 
 export default function AuthorContainer({ avatarUrl, author, title }) {
   return (

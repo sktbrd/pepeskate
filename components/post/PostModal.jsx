@@ -3,15 +3,15 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import Prism from 'prism-react-renderer';
 import { nightOwl } from 'prism-react-renderer';
-import styles from '../styles/PostModal.module.css';
-import useAuthUser from '../pages/api/UseAuthUser';
-import voteOnContent from '../pages/api/voting.js';
+import styles from './PostModal.module.css';
+import useAuthUser from '../../pages/api/UseAuthUser';
+import voteOnContent from '../../pages/api/voting.js';
 import remarkGfm from 'remark-gfm'; // Import remark-gfm
 
 import AuthorContainer from './AuthorContainer'; // Import the AuthorContainer component
 
 // Import the placeholder image
-import placeholderImageUrl from '../public/pepeskate.gif';
+import placeholderImageUrl from '../../public/pepeskate.gif';
 
 import Footer from './ModalFooter'; // Import the ModalFooter subcomponent
 

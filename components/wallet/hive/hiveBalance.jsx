@@ -5,10 +5,10 @@ import Image from 'next/image';
 import Modal from './sendHiveModal.jsx'; // Import the Modal component
 
 // import current user
-import useAuthUser from "../../pages/api/UseAuthUser.js";
+import useAuthUser from "../../../pages/api/UseAuthUser.js";
 
 // import styles 
-import styles from "../../pages/wallet/HiveBalance.module.css";
+import styles from "./HiveBalance.module.css";
 
 export default function HiveBalanceDisplay() {
   const { user } = useAuthUser();
@@ -34,7 +34,7 @@ export default function HiveBalanceDisplay() {
   const handleTransfer = async () => {
     if (window.hive_keychain && user) {
       // Ensure the amount is a string with 3 decimal places
-      const formattedAmount = parseFloat(amount).toFixed(3);
+      const formattedAmount = parseFloat(amount).toFixed(2);
 
       window.hive_keychain.requestTransfer(user.name, toAddress, formattedAmount, "#Test Keychain SDK transfer(will be encrypted)", "HIVE", response => {
         console.log(response);
@@ -49,22 +49,22 @@ export default function HiveBalanceDisplay() {
   }
 
   return (
-    <div className={styles.tokens_box}>
+    <div className={styles.hive_box}>
       <div className={styles.header}>Hive Balance</div>
       {isLoading ? (
         <div>Roll a Joint...</div>
       ) : (
         <>
-          <div className={styles.avatar_container}>
+          <div className={styles.hive_avatar_container}>
             <img 
               src={`https://images.hive.blog/u/${user.name}/avatar`}
               alt="profile avatar"
-              className={styles.avatar}
+              className={styles.hive_avatar}
             />
-            <div className={styles.name}>{user.name}</div>
+            <div className={styles.hive_name}>{user.name}</div>
           </div>
-          <div className={styles.hivebalance_container}>
-            <div className={styles.token_container} onClick={handleOpenModal}>
+          <div className={styles.hive_balance_container}>
+            <div className={styles.hive_token_container} onClick={handleOpenModal}>
               <Image src="/hive_logo.png" alt="Hive Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {hiveBalance ? (
@@ -79,7 +79,7 @@ export default function HiveBalanceDisplay() {
                 )}
               </div>
             </div>
-            <div className={styles.token_container} onClick={handleOpenModal}>
+            <div className={styles.hive_token_container} onClick={handleOpenModal}>
               <Image src="/hive_logo.png" alt="Hive Power Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {hivePower ? (
@@ -94,7 +94,7 @@ export default function HiveBalanceDisplay() {
                 )}
               </div>
             </div>
-            <div className={styles.token_container} onClick={handleOpenModal}>
+            <div className={styles.hive_token_container} onClick={handleOpenModal}>
               <Image src="/hive_logo.png" alt="HBD Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {hbdBalance ? (
@@ -109,7 +109,7 @@ export default function HiveBalanceDisplay() {
                 )}
               </div>
             </div>
-            <div className={styles.token_container} onClick={handleOpenModal}>
+            <div className={styles.hive_token_container} onClick={handleOpenModal}>
               <Image src="/hive_logo.png" alt="Savings Logo" width={30} height={30} className={styles.logo} />
               <div className={styles.token_info}>
                 {savingsBalance ? (

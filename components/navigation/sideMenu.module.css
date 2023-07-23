@@ -1,0 +1,86 @@
+.side-menu {
+  /* Styles for desktop view */
+  position: sticky;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 200px; /* Or whatever width you want for your side menu */
+}
+
+@media (max-width: 768px) {
+  .side-menu {
+    /* Styles for mobile view */
+    position: static; /* Remove fixed positioning */
+    width: 100%; /* Take up the full width of the screen */
+    height: auto; /* Let the height be determined by its content */
+    margin-top: 60px; /* Adjust this value to the height of your navigation bar */
+    overflow: hidden;
+  }
+}
+
+.menuItems {
+  display: flex;
+  flex-direction: row; /* Align menu items horizontally */
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.menuItems li {
+  font-size: 1.2rem;
+  margin-right: 1rem; /* Add some horizontal spacing between menu items */
+  color: #ccc5c5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.menuItems li svg {
+  padding: 7px;
+  align-items: center;
+}
+
+.menuItems li a {
+  color: limegreen;
+}
+
+.menuItems li:hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
+
+.menuItems li:hover svg {
+  color: #f71b07;
+}
+
+.iconMenu li {
+  color: #f7a307;
+}
+
+.closed .menuItems li {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #f7a307;
+}
+
+.menu {
+  display: flex;
+  font-size: 1.2rem;
+  color: #ccc5c5;
+  border-radius: 5px;
+  justify-content: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.menu svg {
+  margin-right: 7px;
+}
+
+.menu:hover {
+  cursor: pointer;
+  background-color: rgb(255, 204, 0);
+}
+
+.menu:hover svg {
+  color: #f71b07;
+}

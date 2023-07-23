@@ -1,0 +1,51 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: 500px; /* Set a minimum width for the entire layout */
+  }
+  
+  .content {
+    display: flex;
+    flex: 1;
+    max-width: 1200px; /* Set a maximum width for the content area */
+    margin: 0 auto; /* Center the content area horizontally */
+  }
+  
+  .main {
+    flex: 1;
+    overflow-x: hidden;
+    margin-left: 20px; /* Add a left margin */
+  }
+  
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .main {
+      margin-left: 0; /* Remove the left margin on small screens */
+      min-width: 100%; /* Set the minimum width to 100% to prevent further shrinking */
+    }
+  }
+  
+  .side-menu {
+    /* Styles for desktop view */
+    position: sticky;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px; /* Or whatever width you want for your side menu */
+  }
+  
+  @media (max-width: 768px) {
+    .side-menu {
+      /* Styles for mobile view */
+      position: static; /* Remove fixed positioning */
+      width: 100%; /* Take up the full width of the screen */
+      height: auto; /* Let the height be determined by its content */
+      margin-top: 60px; /* Adjust this value to the height of your navigation bar */
+      overflow: hidden;
+    }
+  }

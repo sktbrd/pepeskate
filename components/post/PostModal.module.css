@@ -24,9 +24,29 @@
     margin: 0 auto; /* Center the container horizontally */
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
     max-height: 100vh; /* Limit the height of the container to 80% of the viewport height */
+    font-family: 'Courier New', Courier, monospace;
   }
   
-  
+  .modalContainer p{
+    color: limegreen;
+    
+  }
+  .modalContainer a{
+    color: yellow;
+    
+  }
+  .modalContainer h1{
+    color: limegreen;
+  }
+  .modalContainer h2{
+    color: limegreen;
+  }
+  .modalContainer h3{
+    color: limegreen;
+  }
+  .modalContainer li{
+    color: limegreen;
+  }
   .modalHeader {
     margin-bottom: 20px;
     color:black;
@@ -35,10 +55,12 @@
   .modalHeader h3 {
     font-size: 20px;
     font-weight: bold;
+    color: limegreen;
   }
   .modalHeader h2 {
     font-size: 18px;
     font-weight: bold;
+    color: limegreen;
   }
   
   .modalContent {
@@ -107,10 +129,9 @@
     right: 20px;
   }
 
-
-  .center {
-    text-align: center;
-  }
+  .modalContainer p{
+  color: limegreen;
+}
 
 .authorContainer {
   position: sticky;

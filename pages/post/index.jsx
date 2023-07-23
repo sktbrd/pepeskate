@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { KeychainSDK } from 'keychain-sdk';
 import * as dhive from '@hiveio/dhive';
-import styles from '../../styles/PostPage.module.css';
+import styles from './PostPage.module.css';
 
 const PostPage = () => {
   const [title, setTitle] = useState('');

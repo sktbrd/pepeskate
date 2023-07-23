@@ -1,16 +1,17 @@
 import Navbar from "../components/navigation/navbar";
 import SideMenu from "../components/navigation/sideMenu";
 import { useState } from "react";
+import styles from './mainLayout.module.css'; // Import the CSS module
 
 export default function Layout({ children }) {
   const [showSideMenu, setShowSideMenu] = useState(false);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <div className={styles.layout}>
       <Navbar/>
-      <div style={{ display: "flex", flex: 1 }}>
+      <div style={{  justifyContent: "center", alignItems: "center", height: "100vh" }}>
         <SideMenu showSideMenu={showSideMenu} setShowSideMenu={setShowSideMenu} />
-        <main style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}>{children}</main>
+        <main className={styles.main}>{children}</main>
       </div>
     </div>
   );

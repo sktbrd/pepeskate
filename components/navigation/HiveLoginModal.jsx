@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useAuthUser from "../pages/api/UseAuthUser.js";
+import useAuthUser from "../../pages/api/UseAuthUser.js";
 import { useRouter } from "next/router";
-import styles from "../styles/HiveLoginModal.module.css";
+import styles from "./HiveLoginModal.module.css";
 
 function HiveLoginModal({ showModal, handleClose }) {
   const [username, setUsername] = useState("");

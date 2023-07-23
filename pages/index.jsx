@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import HiveBlog from "../components/HiveFeed";
+import HiveBlog from "../components/home/HiveFeed";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../styles/NftGallery.module.css";
+import styles from "./NftGallery.module.css";
 import { useAccount } from "wagmi";
 
 export default function NFTGallery({}) {

@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react';
 // import web3 stuff
 import { useAccount } from "wagmi";
 
-import NFTGallery from "../../components/wallet/nftGallery";
-import TokensBalanceDisplay from "../../components/wallet/evmBalance";
-import HiveBalance from "../../components/wallet/hiveBalance";
+import NFTGallery from "../../components/wallet/nft/nftGallery";
+import TokensBalanceDisplay from "../../components/wallet/evm/evmBalance";
+import HiveBalance from "../../components/wallet/hive/hiveBalance";
 
 // Styles 
 import styles from ".//Wallet.module.css";
@@ -31,12 +31,8 @@ export default function Wallet() {
 
         <TabPanel >
           <div className={styles.wallet_dashboard}>
-          <div>
-              <HiveBalance />
-            </div>
-            <div>
-              <TokensBalanceDisplay walletAddress={address} chain={"ETH_MAINNET"} />
-            </div>
+            <HiveBalance />
+            <TokensBalanceDisplay walletAddress={address} chain={"ETH_MAINNET"} />
           </div>
         </TabPanel>
         <TabPanel>
@@ -46,3 +42,4 @@ export default function Wallet() {
     </div>
   );
 }
+
