@@ -23,7 +23,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto; /* Center the container horizontally */
     overflow-y: auto; /* Enable vertical scrolling if content overflows */
-    max-height: 100vh; /* Limit the height of the container to 80% of the viewport height */
+    max-height: 95vh; /* Limit the height of the container to 80% of the viewport height */
     font-family: 'Courier New', Courier, monospace;
   }
   
@@ -65,12 +65,15 @@
   
   .modalContent {
     margin-bottom: 20px;
+    
   }
   
   .modalContent img {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
+    border-radius: 10px;
+    border: limegreen solid 1px;
   }
   
   .modalCloseButton {
@@ -92,6 +95,11 @@
   .modalContent {
     position: relative;
   }
+
+
+  .modalContent p{
+    justify-content: center;
+  }
   
   .modalVoteButton {
     bottom: 0;
@@ -103,23 +111,7 @@
     padding: 8px 12px;
     cursor: pointer;
   }
-  .modalPrevButton,
-  .modalNextButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #ccc;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 20px;
-  }
+
   
   .modalPrevButton {
     left: 20px;
@@ -131,6 +123,7 @@
 
   .modalContainer p{
   color: limegreen;
+  justify-content: center;
 }
 
 .authorContainer {
@@ -140,3 +133,5 @@
 .modalFooter {
   position: sticky;
 }
+
+

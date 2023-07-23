@@ -12,12 +12,32 @@ body {
 }
 
 
+/* Common styles for iframe */
 iframe {
-margin: 5%;
-border-radius: 10px;
-border: limegreen solid 1px;
+	border-radius: 10px;
+	border: limegreen solid 1px;
+	
+  }
+  
+  /* Styles for desktop */
+  @media (min-width: 768px) {
+	iframe {
+	  margin: 5%;
+	  height: 40vh;
 
-}
+	}
+  }
+  
+  /* Styles for mobile */
+  @media (max-width: 767px) {
+	iframe {
+	  margin: 0;
+	  width: 100%;
+	  max-width: 100%;
+	  height: 40vh;
+	}
+  }
+  
 
 /* This will affect the scrollbar globally */
 ::-webkit-scrollbar {

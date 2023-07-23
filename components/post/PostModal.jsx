@@ -168,10 +168,10 @@ export default function PostModal({ title, content, author, permlink, onClose })
   };
 
   useEffect(() => {
-    // Show a new character every 15 milliseconds (adjust as needed)
+    // Show a new character every 5 milliseconds (adjust as needed)
     const timer = setInterval(() => {
       setCharactersToShow((prevChars) => prevChars + 1);
-    }, 10);
+    }, 5);
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(timer);
