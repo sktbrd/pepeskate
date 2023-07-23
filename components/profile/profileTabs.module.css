@@ -1,6 +1,5 @@
 .channelProfile {
     font-family: Arial, sans-serif;
-    padding: 20px;
   }
   
   .tabBar {
@@ -8,6 +7,7 @@
     justify-content: space-between;
     align-items: right;
     justify-content: right;
+    font-family: 'Courier New', Courier, monospace;
   }
   
   .tabBarLeft {
@@ -51,16 +51,16 @@
     background-color: #f0f0f0;
   }
   .tab {
-    border-radius: 10px;
     display: inline-block;
     cursor: pointer;
     font-size: 18px;
     font-weight: 600;
     padding: 10px;
-    border-radius: 5px 5px 0 0;
-    background-color: #f0f0f0;
-    color: #333;
+    border-radius:0 0 5px 5px ;
+    background-color: #000000;
+    color: #ffffff;
     transition: background-color 0.2s ease;
+    border: limegreen solid 1px;
   }
   
   .tab:hover {
@@ -68,8 +68,8 @@
   }
   
   .tab.active {
-    background-color: #333;
-    color: #fff;
+    background-color: limegreen;
+    color: #000000;
   }
   
   .tabContent {

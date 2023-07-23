@@ -43,4 +43,5 @@ transition: all 0.2s ease-in-out;
 background: linear-gradient(270deg, #05e6b8, #30e89c);
 box-shadow: 0px 4px 16px rgba(53, 168, 124, 0.5);
 transform: translateY(-2px);
+max-width: 50%;
 }

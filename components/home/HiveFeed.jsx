@@ -4,12 +4,17 @@ import styles from "./HiveFeed.module.css";
 import PostModal from "../post/PostModal";
 import LoadingBar from '../fx/LoadingBar.jsx';
 
-
 const client = new Client([
   "https://api.hive.blog",
   "https://anyx.io",
   "https://api.pharesim.me",
 ]);
+
+// Function to calculate post earnings (placeholder value: $69.42)
+const postEarnings = () => {
+  const placeholderEarnings = 69.42; // Replace with actual earnings data from the post
+  return `$${placeholderEarnings.toFixed(2)}`;
+};
 
 export default function HiveBlog(query) {
   const [posts, setPosts] = useState([]);
@@ -68,9 +73,9 @@ export default function HiveBlog(query) {
         </div>
       )}
       {isLoading ? (
-        <center style={{position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+        <center style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
           <LoadingBar />
-        </center> 
+        </center>
       ) : (
         <div className={styles.posts}>
           {posts.map((post) => (
@@ -79,7 +84,7 @@ export default function HiveBlog(query) {
               className={styles.post}
               onClick={() => handlePostClick(post)}
             >
-                <div className={styles.postInfo}>
+              <div className={styles.postInfo}>
                 <div className={styles.authorInfo}>
                   <img
                     src={`https://images.ecency.com/webp/u/${post.author}/avatar/small`}
@@ -89,9 +94,12 @@ export default function HiveBlog(query) {
                   <p className={styles.authorName}>{post.author}</p>
                 </div>
                 <br></br>
-              <img src={post.thumbnail} alt="post thumbnail" className={styles.postThumbnail} />
-              <br></br>
+                <img src={post.thumbnail} alt="post thumbnail" className={styles.postThumbnail} />
+                <br></br>
                 <p className={styles.postTitle}>{post.title}</p>
+
+                {/* Display post earnings */}
+                <div className={styles.postEarnings}>{postEarnings()}</div>
               </div>
             </a>
           ))}
