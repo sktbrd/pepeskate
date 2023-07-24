@@ -151,7 +151,7 @@ export default function HiveBlog(query) {
 
                 {/* Display post earnings */}
                 <div className={styles.postEarnings}>
-                  {`$${post.earnings.toFixed(2)}`}
+                  {`$${post.earnings.toFixed(3)}`}
                 </div>
               </div>
             </a>
