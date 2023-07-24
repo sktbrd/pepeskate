@@ -45,7 +45,7 @@ iframe {
   }
   
   ::-webkit-scrollbar-track {
-	background: #bee9b6; /* color of the tracking area */
+	background: #000000; /* color of the tracking area */
   }
   
   ::-webkit-scrollbar-thumb {
@@ -53,14 +53,10 @@ iframe {
   }
   
   ::-webkit-scrollbar-thumb:hover {
-	background: #388924; /* color of the scroll thumb on hover */
+	background: #000000; /* color of the scroll thumb on hover */
   }
   * {
 	scrollbar-width: thin; /* "auto" or "thin"  */
 	scrollbar-color: #17d874 #1fcd25; /* scroll thumb and track */
   }
 
-
-
-
-  

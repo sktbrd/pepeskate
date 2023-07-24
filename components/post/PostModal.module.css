@@ -15,6 +15,7 @@
   
   .modalContainer {
     border: limegreen solid 2px;
+    color: limegreen;
     background-color: #171616;
     border-radius: 8px;
     padding: 20px;
@@ -31,10 +32,20 @@
     color: limegreen;
     
   }
+  .modalContainer test-justify {
+    color: limegreen !important;
+  }
+  
+
   .modalContainer a{
     color: yellow;
-    
+  } 
+
+  .pull-right {
+    color: limegreen !important;
   }
+  
+  
   .modalContainer h1{
     color: limegreen;
   }

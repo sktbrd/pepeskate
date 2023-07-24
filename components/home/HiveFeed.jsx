@@ -19,7 +19,7 @@ const placeholderEarnings = 69.42; // Replace with actual placeholder value
 
 export default function HiveBlog(query) {
   const [posts, setPosts] = useState([]);
-  const [tag, setTag] = useState("skatehive"); // set the default search author to "skatehive"
+  const [tag, setTag] = useState("hive-173115"); // set the default search author to "skatehive"
   const [isLoading, setIsLoading] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const [client, setClient] = useState(new Client(nodes[0]));
@@ -93,6 +93,7 @@ export default function HiveBlog(query) {
   const handlePostClick = (post) => {
     setSelectedPost(post);
     console.log(post.body);
+    console.log(post)
   };
 
   const handleModalClose = () => {

@@ -91,11 +91,16 @@ export default function PostModal({ title, content, author, permlink, onClose })
       </blockquote>
     ),
     table: ({ children }) => (
-      <table style={{ color: 'limegreen', borderCollapse: 'collapse', width: '100%' }}>{children}</table>
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ color: 'limegreen', borderCollapse: 'collapse', width: '100%' }}>
+          {children}
+        </table>
+      </div>
     ),
+    
     tableCell: ({ isHeader, children }) => {
       const Tag = isHeader ? 'th' : 'td';
-      return <Tag style={{ color: 'limegreen', padding: '10px', border: isHeader ? 'none' : '1px solid #ddd' }}>{children}</Tag>;
+      return <Tag style={{  color: 'limegreen', padding: '10px', border: isHeader ? 'none' : '1px solid #ddd' }}>{children}</Tag>;
     },
     image: ({ src, alt }) => {
       // Check if the image URL matches the avatar image URL pattern
@@ -152,6 +157,23 @@ export default function PostModal({ title, content, author, permlink, onClose })
         return <strong style={{ fontWeight: 'bold', color: 'limegreen' }}>{children}</strong>;
       }
     },
+    div: ({ children, className }) => {
+      if (className === 'pull-left') {
+        return (
+          <div style={{ float: 'left' }}>
+            {children}
+          </div>
+        );
+      } else if (className === 'pull-right') {
+        return (
+          <div style={{ float: 'right' }}>
+            {children}
+          </div>
+        );
+      } else {
+        return <div>{children}</div>;
+      }
+    },
   };
 
   // State variable to keep track of the number of characters to display
@@ -170,12 +192,22 @@ export default function PostModal({ title, content, author, permlink, onClose })
   useEffect(() => {
     // Show a new character every 5 milliseconds (adjust as needed)
     const timer = setInterval(() => {
-      setCharactersToShow((prevChars) => prevChars + 1);
+      setCharactersToShow((prevChars) => {
+        // Check if all characters are already shown
+        if (prevChars >= processedContent.length) {
+          // Clear the interval
+          clearInterval(timer);
+        } else {
+          // If not all characters are shown, increment the count
+          return prevChars + 1;
+        }
+      });
     }, 5);
-
+  
     // Clear the interval when the component is unmounted
     return () => clearInterval(timer);
-  }, []);
+  }, [processedContent]);
+  
 
   useEffect(() => {
     // Scroll the modal container as characters are added, but only if the user has not scrolled manually
