@@ -98,3 +98,15 @@
 .profileItem {
   color: white;
 }
+
+@media (max-width: 767px) {
+  /* Mobile layout */
+  .table {
+    font-size: 14px; /* Reduce font size for mobile view */
+  }
+
+  .table td,
+  .table th {
+    padding: 5px; /* Reduce padding for mobile view */
+  }
+}

@@ -49,15 +49,7 @@ export default function HiveProfile() {
         </div>
       ) : (
         <div className={styles.profile_container}>
-          {coverImageUrl && (
-            <div
-              className={styles.cover}
-              style={{
-                backgroundImage: `url(${coverImageUrl})`
-              }}
-            />
-          )}
-          <div className={styles.avatar_container}>
+                    <div className={styles.avatar_container}>
             <img
               src={`https://images.hive.blog/u/${user.name}/avatar`}
               alt="profile avatar"
@@ -65,11 +57,24 @@ export default function HiveProfile() {
             />
             <div className={styles.name}>{user.name}</div>
           </div>
+          {coverImageUrl && (
+            
+            <div
+              className={styles.cover}
+              style={{
+                backgroundImage: `url(${coverImageUrl})`
+              }}
+            />
+            
+          )}
+        <div>
+          <ProfileTabs></ProfileTabs>
         </div>
+
+        </div>
+        
       )}
-      <div>
-        <ProfileTabs></ProfileTabs>
-      </div>
+
     </div>
   );
 }
