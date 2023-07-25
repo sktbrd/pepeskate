@@ -33,12 +33,14 @@ const { chains, provider } = configureChains(
 const { connectors } = getDefaultWallets({
   appName: "PepeSkate",
   chains,
+  projectId: '52f3a9b032f5caf26719af6939715629',
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider,
+
 });
 
 function MyApp({ Component, pageProps }) {
