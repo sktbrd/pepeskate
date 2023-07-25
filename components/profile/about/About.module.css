@@ -103,10 +103,11 @@
   /* Mobile layout */
   .table {
     font-size: 14px; /* Reduce font size for mobile view */
+  
   }
 
-  .table td,
-  .table th {
-    padding: 5px; /* Reduce padding for mobile view */
+  .table td{
+    word-break: break-word; /* Allow long words to break and wrap onto the next line */
   }
+
 }

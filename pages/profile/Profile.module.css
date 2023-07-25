@@ -53,7 +53,7 @@
     .avatar_container {
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -150%);
+      transform: translate(-50%, -1350%);
       flex-direction: column;
 
     }

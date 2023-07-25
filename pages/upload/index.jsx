@@ -225,7 +225,6 @@ const PostPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
-        <h1>POST</h1>
         <div className={styles.inputGroup}>
           <h2>Title:</h2>
           <input type="text" placeholder="Enter a title" value={title} onChange={handleTitleChange} />
