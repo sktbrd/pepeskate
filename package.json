@@ -22,6 +22,7 @@
 		"@vercel/analytics": "^1.0.0",
 		"alchemy-sdk": "^2.6.2",
 		"axios": "^1.4.0",
+		"html-react-parser": "^4.2.0",
 		"keychain-sdk": "^0.3.0",
 		"markdown-to-jsx": "^7.2.0",
 		"marked": "^4.3.0",
@@ -40,7 +41,7 @@
 		"rehype-raw": "^6.1.1",
 		"rehype-slug": "^5.1.0",
 		"remark-gfm": "^3.0.1",
-		"sanity": "^3.11.1",
+		"sanity": "^3.8.3",
 		"styled-components": "^5.3.10",
 		"theme-ui": "^0.16.0",
 		"wagmi": "^0.12.6"

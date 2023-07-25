@@ -230,13 +230,11 @@ export default function PostModal({ title, content, author, permlink, onClose })
             <AuthorContainer avatarUrl={avatarUrl} author={author} title={title} />
             <hr></hr>
             <div className={styles.modalContent}>
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={renderers}
-              >
-                {processedContent.substring(0, charactersToShow)}
-              </ReactMarkdown>
+            <div className={styles.previewContainer}>
+  <h2>Preview</h2>
+  <ReactMarkdown renderers={renderers} plugins={[gfm]} children={title + '\n\n' + body + '\n\n' + tags} />
+</div>
+
             </div>
             {/* Use the ModalFooter subcomponent for the footer */}
             <Footer onClose={handleClose} onVote={handleVote} />

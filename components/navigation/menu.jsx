@@ -54,8 +54,8 @@ function Menu({ showSideMenu, setShowSideMenu }) {
           </li>
         )}
         {user && (
-          <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/post")}>
-            <Link href={"/post"}><FaUpload/> Post </Link> 
+          <li className={styles.iconMenu} onClick={(e) => handleCloseMenu(e, "/upload")}>
+            <Link href={"/upload"}><FaUpload/> Post </Link> 
           </li>
         )}
         {user ? (
