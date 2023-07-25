@@ -7,9 +7,15 @@ import gfm from 'remark-gfm';
 import Prism from 'prism-react-renderer';
 import parse from 'html-react-parser';
 
-const renderers = {
-  // ... other renderers ...
 
+const client = new dhive.Client([
+  'https://api.hive.blog',
+  'https://api.hivekings.com',
+  'https://anyx.io',
+  'https://api.openhive.network',
+]);
+
+const renderers = {
   html: ({ value }) => parse(value),
 
 
@@ -254,11 +260,6 @@ const PostPage = () => {
   );
 };
 
-const client = new dhive.Client([
-  'https://api.hive.blog',
-  'https://api.hivekings.com',
-  'https://anyx.io',
-  'https://api.openhive.network',
-]);
+
 
 export default PostPage;
